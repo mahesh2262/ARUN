@@ -1,0 +1,158 @@
+.tab-div {
+    border-right: 2px solid #3b9bc4;
+    margin-left: 0px;
+    flex: 0 0 21%
+}
+
+.sideNavButton {
+    padding: 1px;
+    width: 243px;
+    margin-bottom: 13px;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.column_Name {
+
+    font-size: 14px;
+    font-weight: 500;
+
+    .tablevalue-css {
+        font-size: 14px;
+        font-weight: normal;
+    }
+}
+
+.heading_css {
+    margin-top: 19px;
+}
+
+.column_value {
+    font-size: 14px;
+}
+
+.value_css {
+    margin-top: 19px;
+    padding: 0px 1px;
+}
+
+.latAndlon {
+    font-weight: 500;
+}
+
+.tableResponsive {
+    margin: 30px 0px;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+// .tableWrapper{
+//     min-width: 1000px;
+//     background: #fff;
+//     padding: 20px 25px;
+
+// }
+.table-css {
+    td.mat-cell {
+        padding: 16px 0;
+        border-bottom: 1px solid beige;
+        border-top: 1px solid beige;
+    }
+
+    td.mat-cell:first-child {
+        border-left: 1px solid beige;
+        padding: 0px 26px;
+    }
+
+    td.mat-cell:last-child {
+        border-right: 1px solid beige;
+        padding: 0px 0px;
+    }
+
+    tr.mat-header-cell {
+        border: beige;
+    }
+
+    th.mat-header-cell {
+        background-color: aliceblue;
+        border: beige;
+    }
+
+    table {
+        border-spacing: 0 8px !important;
+        border: beige;
+    }
+}
+
+.icon-plus {
+    background-color: #598bff;
+    border-radius: 12px;
+}
+
+.bgrcolor {
+    background-color: #598bff;
+    border-radius: 12px;
+    margin-left: 4px;
+}
+
+.action-icon {
+    padding: 2px;
+}
+
+.line {
+    border: 1px solid grey
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    padding: 22px 0px;
+}
+
+.button-stepper {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.text-area {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.selectBox {
+    width: 90%;
+}
+
+.text-box-value {
+    width: 87%;
+}
+
+.tab-sticky {
+    position: sticky;
+    top: 0;
+}
+
+.footer-button {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+// New Tab
+.nav-pills .nav-link {
+    border-radius: 0.25rem;
+    border-width: 0px;
+}
+
+.add-button{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0px 7px 5px 2px;
+}

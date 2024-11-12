@@ -1,0 +1,105 @@
+<section class="screenLogin">
+     <div class="container">
+          <div class="row mx-md-auto mx-0">
+               <div class="col-md-7 v-mid-full-screen">
+                    <!-- For Desktop -->
+                    <div>
+                         <div class="my-md-4 my-4 log-img">
+                              <img src="assets/images/Business deal-cuate.svg" width="300px" />
+                         </div>
+                         <div class="d-flex mb-2 mob-hide">
+                              <div class="bp-cloud-text">
+                                   <img src="assets/images/BP_cloud.svg" />
+                                   Customer Portal
+                              </div>
+                         </div>
+                         <div class="mb-4 mob-hide">
+                              <div class="tiny-text">
+                                   Thank you for choosing Exalca.We're excited to get you on board.
+                              </div>
+                              <div class="tiny-text">
+                                   Discover the future of customer engagement
+                              </div>
+                         </div>
+                         <!-- <div class="mb-4 mob-hide">
+                              <img src="assets/images/jkc_logo.svg" width="200px" />
+                         </div> -->
+                    </div>
+               </div>
+               <div class="col-md-5 px-md-5 px-0 v-mid-full-screen">
+                    <div class="credential-card">
+                         <div class="welcome-text mb-4 w-100">
+                              <span class="mr-md-4 mr-0 mb-md-0 mb-3"> Welcome to </span><img src="assets/images/jkc_logo.svg" height="30px" />
+                         </div>
+                         <div class="mb-4 text-center">
+                              <span class="text-gray">Sign In by OTP</span>
+                         </div>
+                         <form>
+                              <div class="mb-4">
+                                   <label class="form-label">Firm Name</label>
+                                   <div class="input-group mb-3">
+                                        <span class="input-group-text log-input">
+                                             <img src="assets/images/user_id.svg" width="90%" />
+                                        </span>
+                                        <input type="text" class="form-control log-input" placeholder="Enter user name" aria-label="Username" aria-describedby="basic-addon1" [value]="firmName" />
+                                   </div>
+                              </div>
+
+                              <div class="mb-4">
+                                   <label class="form-label">Mail Id</label>
+                                   <div class="input-group mb-3">
+                                        <!-- <span class="input-group-text log-input">
+                  <img src="assets/images/user_id.svg" width="90%" />
+                </span> -->
+                                        <nb-select class="w-100 mw-100 selectBox form-control" placeholder="Select a mail ID" [(selected)]="selectedItem">
+                                             <nb-option *ngFor="let email of emailList" [value]="email">
+                                                  {{email}}
+                                             </nb-option>
+                                        </nb-select>
+                                   </div>
+                              </div>
+
+                              <div class="text-center mb-2">
+                                   <span class="font-weight-bold">
+                                        Please enter the 6 digit OTP to continue</span>
+                              </div>
+
+                              <div class="o-c">
+                                   <div class="py-4">
+                                        <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+                                   </div>
+                              </div>
+
+                              <div class="text-center mb-2">
+                                   <button class="btn btn-link link font-weight-bold px-0" (click)="requestOtp()">
+                                        Request for OTP
+                                   </button>
+                              </div>
+
+                              <button type="button" (click)="submitOTP()" class="btn login-btn w-100">Submit</button>
+                         </form>
+                    </div>
+               </div>
+               <!-- For Mobile -->
+               <div class="dkp-hide w-100">
+                    <div class="d-flex mt-4 py-2">
+                         <div class="bp-cloud-text text-center w-100">
+                              <img src="assets/images/BP_cloud.svg" width="40px" />
+                              Customer Portal
+                         </div>
+                    </div>
+                    <div class="mb-4 text-center">
+                         <div class="tiny-text">
+                              Thank you for choosing Exalca.We're excited to get you on board.
+                         </div>
+                         <div class="tiny-text">
+                              Discover the future of customer engagement
+                         </div>
+                    </div>
+                    <div class="mb-4 text-center">
+                         <img src="assets/images/poweredby_exalca.svg" width="100px" />
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>

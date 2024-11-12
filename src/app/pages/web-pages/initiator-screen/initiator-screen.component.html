@@ -1,0 +1,511 @@
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 mob-hide">
+        <div class="py-5 px-3 bg-card-duo">
+          <div class="mb-5 text-center">
+            <div class="top-info">
+              <span>Personal</span>
+            </div>
+            <div class="bottom-info">
+              <span>Information</span>
+            </div>
+          </div>
+          <!-- <div class="mb-4">
+                                          <img src="./../../../../assets/images/infos/1.png" width="200px">
+                                   </div> -->
+
+          <div class="w-100 text-center mb-4">
+            <img src="./../../../../assets/images/infos/1.png" class="w-100" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 px-0">
+        <div class="row dkp-hide">
+          <div class="cross-heading-lg w-100">
+            <span> Personal Information</span>
+          </div>
+        </div>
+        <div class="enable-input info-scroll">
+          <form
+            class="py-3 px-md-3 px-0 form-card-bg position-relative overflow-hidden"
+            [formGroup]="personalInfoForm"
+          >
+            <div class="loader-point" id="nb-global-spinner" *ngIf="loader">
+              <div
+                class="spinner-grow text-primary"
+                style="width: 4rem; height: 4rem"
+                role="status"
+              ></div>
+            </div>
+            <div class="boxcard mb-3 w-100">
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label
+                    >Types of Category<span
+                      class="text-danger font-weight-bold"
+                    >
+                      *</span
+                    ></label
+                  >
+                  <nb-select
+                    formControlName="Category"
+                    class="form-control form-control-sm w-100 mw-100"
+                    placeholder="Select category"
+                  >
+                    <nb-option
+                      *ngFor="let category of categories"
+                      [value]="category.Name"
+                    >
+                      {{ category.Name }}
+                    </nb-option>
+                  </nb-select>
+                  <mat-error
+                    *ngIf="
+                      personalInfoForm.get('Category').touched &&
+                      personalInfoForm.get('Category').hasError('required')
+                    "
+                    >Category is required</mat-error
+                  >
+
+                  <mat-error
+                    *ngIf="
+                      drafted &&
+                      personalInfoForm.get('Category').hasError('required')
+                    "
+                    >Category is required</mat-error
+                  >
+                </div>
+                <div class="form-group col-md-4">
+                  <label
+                    >Type of Product<span class="text-danger font-weight-bold">
+                      *</span
+                    ></label
+                  >
+                  <nb-select
+                    formControlName="Product"
+                    multiple
+                    class="form-control form-control-sm w-100 mw-100"
+                    placeholder="Select product"
+                  >
+                    <nb-option (click)="toggleSelection($event)">
+                      <nb-checkbox
+                        (checkedChange)="toggleSelection($event)"
+                        [checked]="isChecked()"
+                        (click)="$event.stopPropagation()"
+                        >All</nb-checkbox
+                      >
+                    </nb-option>
+
+                    <nb-option
+                      *ngFor="let product of products"
+                      [value]="product"
+                    >
+                      {{ product }}
+                    </nb-option>
+                  </nb-select>
+                  <mat-error
+                    *ngIf="
+                      personalInfoForm.get('Product').touched &&
+                      personalInfoForm.get('Product').hasError('required')
+                    "
+                    >Product is required</mat-error
+                  >
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label
+                    >Status of the Firm<span
+                      class="text-danger font-weight-bold"
+                    >
+                      *</span
+                    ></label
+                  >
+                  <span *ngIf="!readable">
+                    <nb-select
+                      class="w-100 mw-100 selectBox form-control"
+                      placeholder="Select status of firm"
+                      formControlName="FirmStatus"
+                      (selectedChange)="changeLocation($event)"
+                    >
+                      <nb-option
+                        *ngFor="let statusOfFirm of statusOfFirms"
+                        value="{{ statusOfFirm }}"
+                      >
+                        {{ statusOfFirm }}
+                      </nb-option>
+                    </nb-select>
+                  </span>
+                  <span *ngIf="readable">
+                    <nb-select
+                      class="w-100 mw-100 selectBox form-control"
+                      placeholder="Select status of firm"
+                      disabled
+                      [(selected)]="selectedStatusOfFirm"
+                    >
+                    </nb-select>
+                  </span>
+                  <mat-error
+                    *ngIf="
+                      personalInfoForm.get('FirmStatus').touched &&
+                      personalInfoForm.get('FirmStatus').hasError('required')
+                    "
+                    >Firm status is required</mat-error
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="boxcard mb-3 w-100">
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label
+                    >Name of the Firm<span class="text-danger font-weight-bold">
+                      *</span
+                    ></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    oninput="this.value = this.value.trimStart().toUpperCase()"
+                    (keypress)="KeyPressValidation($event, 'Name')"
+                    formControlName="Name"
+                    placeholder="Enter name of the firm"
+                  />
+                  <mat-error
+                    *ngIf="
+                      personalInfoForm.get('Name').touched &&
+                      personalInfoForm.get('Name').hasError('required')
+                    "
+                    >Firm name is required</mat-error
+                  >
+                  <mat-error
+                    *ngIf="
+                      drafted &&
+                      personalInfoForm.get('Name').hasError('required')
+                    "
+                    >Firm name is required</mat-error
+                  >
+                </div>
+                <div class="form-group col-md-8">
+                  <label
+                    >Address<span class="text-danger font-weight-bold">
+                      *</span
+                    ></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    (keypress)="KeyPressValidation($event, 'Address')"
+                    oninput="this.value = this.value.trimStart().toUpperCase()"
+                    formControlName="Address"
+                    placeholder="Enter address"
+                    maxlength="70"
+                  />
+                  <mat-error
+                    *ngIf="
+                      personalInfoForm.get('Address').touched &&
+                      personalInfoForm.get('Address').hasError('required')
+                    "
+                    >Address is required</mat-error
+                  >
+                  <mat-error
+                    *ngIf="
+                      personalInfoForm?.get('Address')?.hasError('maxlength')
+                    "
+                  >
+                    Address length can't exceed 70 characters
+                  </mat-error>
+                </div>
+                <div class="form-group col-md-4">
+                  <label
+                    >State<span class="text-danger font-weight-bold">
+                      *</span
+                    ></label
+                  >
+                  <nb-select
+                    formControlName="State"
+                    class="form-control form-control-sm w-100 mw-100"
+                    placeholder="Select state"
+                  >
+                    <nb-option
+                      *ngFor="let state of states"
+                      [value]="state.StateCode"
+                    >
+                      {{ state.StateName }}
+                    </nb-option>
+                  </nb-select>
+
+                  <mat-error
+                    *ngIf="
+                      personalInfoForm.get('State').touched &&
+                      personalInfoForm.get('State').hasError('required')
+                    "
+                    >State is required</mat-error
+                  >
+                </div>
+                <div class="form-group col-md-4">
+                  <label
+                    >District<span class="text-danger font-weight-bold">
+                      *</span
+                    ></label
+                  >
+                  <nb-select
+                    class="form-control form-control-sm w-100 mw-100"
+                    formControlName="District"
+                    placeholder="Select district"
+                  >
+                    <nb-option
+                      *ngFor="let district of districts"
+                      [value]="district.CountyCode"
+                    >
+                      {{ district.CountyName }}
+                    </nb-option>
+                  </nb-select>
+                  <mat-error
+                    *ngIf="
+                      personalInfoForm.get('District').touched &&
+                      personalInfoForm.get('District').hasError('required')
+                    "
+                    >District is required</mat-error
+                  >
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label
+                    >City<span class="text-danger font-weight-bold">
+                      *</span
+                    ></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    oninput="this.value = this.value.trimStart().toUpperCase()"
+                    (keypress)="KeyPressValidation($event, 'Name')"
+                    formControlName="City"
+                    placeholder="Enter city"
+                  />
+                  <mat-error
+                    *ngIf="
+                      personalInfoForm.get('City').touched &&
+                      personalInfoForm.get('City').hasError('required')
+                    "
+                    >City is required</mat-error
+                  >
+                </div>
+                <div class="form-group col-md-3">
+                  <label
+                    >Taluka<span class="text-danger font-weight-bold">
+                      *</span
+                    ></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    oninput="this.value = this.value.trimStart().toUpperCase()"
+                    (keypress)="KeyPressValidation($event, 'Name')"
+                    formControlName="Taluk"
+                    placeholder="Enter taluk"
+                  />
+                  <mat-error
+                    *ngIf="
+                      personalInfoForm.get('Taluk').touched &&
+                      personalInfoForm.get('Taluk').hasError('required')
+                    "
+                    >Taluk is required</mat-error
+                  >
+                </div>
+                <div class="form-group col-md-3">
+                  <label
+                    >Pincode<span class="text-danger font-weight-bold">
+                      *</span
+                    ></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    (focusout)="OnFocusOut($event,'pincode')"
+                    (keypress)="KeyPressValidation($event, 'Number')"
+                    formControlName="Pincode"
+                    placeholder="Enter pincode"
+                    maxlength="6"
+                  />
+                  <mat-error
+                    *ngIf="
+                      personalInfoForm.get('Pincode').touched &&
+                      personalInfoForm.get('Pincode').hasError('required')
+                    "
+                    >Pincode is required</mat-error
+                  >
+                  <mat-error
+                    *ngIf="
+                      personalInfoForm.get('Pincode').hasError('pattern')
+                    "
+                    >Enter Valid Pincode</mat-error
+                  >
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Geo-Location</label>
+                  <div class="row">
+                    <div class="col-6">
+                      <input
+                        type="number"
+                        class="form-control form-control-sm disable"
+                        placeholder="Latitude"
+                        formControlName="Latitude"
+                        readonly
+                      />
+                    </div>
+                    <div class="col-6 pl-0">
+                      <div class="input-group mb-1">
+                        <input
+                          type="number"
+                          placeholder="Longitude"
+                          formControlName="Logitude"
+                          aria-label="Search"
+                          class="form-control log-input disable"
+                          readonly
+                        />
+                        <span class="input-group-text log-input rounded-0 p-0">
+                          <button
+                            class="btn btn-sm p-0 btn-download h-100 rounded-0 rounded-right"
+                            type="button"
+                            id="button-addon2"
+                            (click)="getGeoLocation()"
+                          >
+                            <i class="bi bi-geo"></i>
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="boxcard mb-3 w-100">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <span class="h6">Add Proprietor / Partner</span>
+                </div>
+                <div class="col-md-6 text-right">
+                  <button
+                    [disabled]="addButton"
+                    class="btn btn-sm p-0 btn-download h-100"
+                    (click)="addPersonalDetails()"
+                  >
+                    <i class="bi bi-plus-lg mr-2"></i> Add
+                  </button>
+                </div>
+              </div>
+              <div class="table-responsive w-100 m-0">
+                <table
+                  mat-table
+                  [dataSource]="contactdataSource"
+                  class="mat-elevation-z8 nowrap w-100 table-css nowrap"
+                >
+                  <ng-container matColumnDef="PersonName">
+                    <th mat-header-cell *matHeaderCellDef width="25%">Name</th>
+                    <td mat-cell *matCellDef="let value">
+                      {{ value.PersonName }}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="Mobile">
+                    <th mat-header-cell *matHeaderCellDef width="20%">
+                      Mobile
+                    </th>
+                    <td mat-cell *matCellDef="let value">
+                      {{ value.Mobile }}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="Email">
+                    <th mat-header-cell *matHeaderCellDef width="45%">
+                      EmailId
+                    </th>
+                    <td mat-cell *matCellDef="let value">
+                      {{ value.Email }}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="add">
+                    <th
+                      mat-header-cell
+                      *matHeaderCellDef
+                      width="10%"
+                      class="text-center"
+                    >
+                      Action
+                    </th>
+                    <td
+                      class="action-icon text-right"
+                      mat-cell
+                      *matCellDef="let value; let dd = index"
+                    >
+                      <button
+                        mat-mini-fab
+                        class="btn btn-sm"
+                        (click)="editPersonalDetails(value, dd)"
+                      >
+                        <i class="bi bi-pen-fill text-info"></i>
+                      </button>
+                      <button
+                        mat-mini-fab
+                        class="btn btn-sm"
+                        (click)="deletepersonalDetails(value, dd)"
+                      >
+                        <i class="bi bi-trash text-danger"></i>
+                      </button>
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns"
+                  ></tr>
+                </table>
+              </div>
+            </div>
+
+            <nav
+              class="navbar navbar-light bg-white bring-back-0 fixed-bottom border-top py-3 px-4 row"
+            >
+              <div class="col-md-6 offset-md-6">
+                <div class="row justify-content-end">
+                  <div class="col-md-auto col-3 px-md-3 px-0">
+                    <button
+                      type="button"
+                      class="btn btn-danger fs-13 rounded-0"
+                      (click)="clearForm()"
+                    >
+                      Clear <i class="bi bi-eraser"></i>
+                    </button>
+                  </div>
+
+                  <div class="col-md-auto col-6 px-md-3 px-0 text-center">
+                    <button
+                      type="button"
+                      class="btn btn-secondary fs-13 rounded-0"
+                      (click)="submit('Draft')"
+                    >
+                      Save as Draft <i class="bi bi-hdd mx-1"></i>
+                    </button>
+                  </div>
+
+                  <div class="col-md-auto col-3 px-md-3 px-0 text-center">
+                    <button
+                      type="button"
+                      class="btn btn-success fs-13 rounded-0"
+                      (click)="submit('Initiated')"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,109 @@
+<div class="tab-pane fade show active" #details_of_firm>
+     <div>
+          <div class="cross-heading">
+               <span>Bank Details of Firm/Party</span>
+          </div>
+     </div>
+     <div class="boxcard mb-5 zero-radius-top">
+          <form #bank [formGroup]="BankForm">
+               <div class="row">
+                    <div class="form-group col-md-6">
+                         <label>Enter IFSC Code<span class="text-danger font-weight-bold">
+                                   *</span></label>
+                         <input type="text" class="form-control form-control-sm" (focusout)="OnFocusOut($event,'ifsc')" oninput="this.value = this.value.trimStart().toUpperCase()" (keypress)="KeyPressValidation($event, 'A&N')" placeholder="Enter IFSC number" aria-label="IFSC" formControlName="IFSC" [readonly]="readable || editclick" maxlength="11" />
+                         <mat-error *ngIf="BankForm?.get('IFSC')?.touched && BankForm?.get('IFSC')?.hasError('required')">
+                              IFSC Code is required
+                         </mat-error>
+                         <mat-error *ngIf="BankForm?.get('IFSC')?.hasError('pattern')">
+                              Enter a valid IFSC Code
+                         </mat-error>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                         <label>Enter Bank A/c Number<span class="text-danger font-weight-bold">
+                                   *</span></label>
+                         <input type="text" class="form-control form-control-sm" (focusout)="OnFocusOut($event,'accNumber')" (keypress)="KeyPressValidation($event, 'Number')" placeholder="Enter Bank A/c Number" aria-label="Accno" formControlName="AccNumber" [readonly]="readable || editclick" />
+                         <mat-error *ngIf="
+              BankForm?.get('AccNumber')?.touched &&
+              BankForm?.get('AccNumber')?.hasError('required')
+            ">
+                              Bank A/c Number is required
+                         </mat-error>
+                         <mat-error *ngIf="
+              saveBankInfo && BankForm?.get('AccNumber')?.hasError('minlength')
+            ">
+                              Bank Acc.Number should have minimum 11 characters length.
+                         </mat-error>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                         <label>Enter Bank Name<span class="text-danger font-weight-bold">
+                                   *</span></label>
+                         <input type="text" class="form-control form-control-sm" oninput="this.value = this.value.trimStart().toUpperCase()" (keypress)="KeyPressValidation($event, 'Name')" formControlName="BankName" placeholder="Enter Bank Name" aria-label="Bankname" [readonly]="readable || editclick" />
+                         <mat-error *ngIf="
+              BankForm?.get('BankName')?.touched &&
+              BankForm?.get('BankName')?.hasError('required')
+            ">
+                              Bank Name is required
+                         </mat-error>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                         <label>Enter Branch Name<span class="text-danger font-weight-bold">
+                                   *</span></label>
+                         <input type="text" class="form-control form-control-sm" (keypress)="KeyPressValidation($event, 'Branch')" oninput="this.value = this.value.trimStart().toUpperCase()" formControlName="Branch" placeholder="Enter Branch Name" aria-label="Branchname" [readonly]="readable || editclick" />
+                         <mat-error *ngIf="
+              BankForm?.get('Branch')?.touched &&
+              BankForm?.get('Branch')?.hasError('required')
+            ">
+                              Branch Name is required
+                         </mat-error>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                         <label>Enter Account Holder Name</label>
+                         <input type="text" class="form-control form-control-sm" (keypress)="KeyPressValidation($event, 'Name')" oninput="this.value = this.value.trimStart().toUpperCase()" formControlName="AccHolder" placeholder="Enter Account Holder Name" aria-label="Accname" [readonly]="readable || editclick" />
+                         <mat-error *ngIf="
+              BankForm?.get('AccHolder')?.touched &&
+              BankForm?.get('AccHolder')?.hasError('required')
+            ">
+                              Account Holder Name is required
+                         </mat-error>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                         <label>Enter Nominee Name</label>
+                         <input type="text" class="form-control form-control-sm" (keypress)="KeyPressValidation($event, 'Name')" oninput="this.value = this.value.trimStart().toUpperCase()" formControlName="NomineeName" placeholder="Enter Nominee Name" aria-label="Nomname" [readonly]="readable || editclick" />
+                         <mat-error *ngIf="
+              BankForm?.get('NomineeName')?.touched &&
+              BankForm?.get('NomineeName')?.hasError('required')
+            ">
+                              Nominee Name is required
+                         </mat-error>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                         <label>Enter Nominee Relation</label>
+                         <input type="text" class="form-control form-control-sm" (keypress)="KeyPressValidation($event, 'Name')" oninput="this.value = this.value.trimStart().toUpperCase()" formControlName="NomineeRelation" placeholder="Enter Nominee Relation" aria-label="Nomrel" [readonly]="readable || editclick" />
+                         <mat-error *ngIf="
+              BankForm?.get('NomineeRelation')?.touched &&
+              BankForm?.get('NomineeRelation')?.hasError('required')
+            ">
+                              Nominee Relation is required
+                         </mat-error>
+                    </div>
+               </div>
+               <div class="row w-100 m-0" *ngIf="show">
+                    <div class="pt-3 w-100">
+                         <button class="btn btn-danger rounded-0 btn-sm" [disabled]="editclick" (click)="cancel()" >Cancel</button>
+                         <button class="btn btn-success rounded-0 btn-sm float-right px-3" (click)="saveBankFirm()" [disabled]="editclick">
+                              Save
+                         </button>
+                         <button type="button" class="btn btn-primary rounded-0 mx-1 btn-sm float-right" (click)="editClicked()">
+                              Edit <i class="bi bi-pencil ml-1"></i>
+                         </button>
+                    </div>
+               </div>
+          </form>
+     </div>
+</div>

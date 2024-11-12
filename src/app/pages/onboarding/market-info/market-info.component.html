@@ -1,0 +1,481 @@
+<div class="tab-pane fade show active" #market_information>
+  <div>
+    <div class="cross-heading">
+      <span>Market Information</span>
+    </div>
+  </div>
+  <div class="boxcard mb-5 zero-radius-top">
+    <form class="row" [formGroup]="marketInformationForm">
+      <div class="form-group col-md-6">
+        <label>Name of the Market</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          placeholder="Enter the Name of the Market"
+          formControlName="Market"
+          (keypress)="KeyPressValidation($event, 'Name')"
+          oninput="this.value = this.value.trimStart().toUpperCase()"
+        />
+      </div>
+
+      <div class="form-group col-md-6">
+        <label
+          >Year of Establishment<span class="text-danger font-weight-bold">
+            *</span
+          ></label
+        >
+        <!-- <input
+          type="text"
+          class="form-control form-control-sm"
+          placeholder="Enter Year of Establishment"
+          formControlName="YearOfEstablishment"
+          minlength="4"
+          maxlength="4"
+        /> -->
+
+        <nb-select
+          class="w-100 mw-100 selectBox form-control"
+          formControlName="YearOfEstablishment"
+          placeholder="Year of establishment"
+        >
+          <nb-option *ngFor="let year of yearsList" [value]="year">{{
+            year
+          }}</nb-option>
+        </nb-select>
+
+        <mat-error
+          *ngIf="
+            marketInformationForm?.get('YearOfEstablishment')?.touched &&
+            marketInformationForm
+              ?.get('YearOfEstablishment')
+              ?.hasError('required')
+          "
+        >
+          Year of Establishment is required
+        </mat-error>
+        <!-- <mat-error *ngIf="
+            marketInformationForm?.get('YearOfEstablishment')?.touched &&
+            yearValidation
+          "
+        >
+          Year value should be in the range 1950 - 2100
+                    </mat-error> -->
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Population of Market</label>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          placeholder="Enter Population of Market"
+          formControlName="Population"
+          (keypress)="KeyPressValidation($event, 'Number')"
+        />
+        <mat-error
+          *ngIf="marketInformationForm?.get('Population')?.hasError('isZero')"
+        >
+          Value cannot be zero or negative
+        </mat-error>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Areas that Stockist will serve</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          placeholder="Enter Area of the Stockist"
+          formControlName="ServeArea"
+          (keypress)="KeyPressValidation($event, 'Address')"
+          oninput="this.value = this.value.trimStart().toUpperCase()"
+        />
+      </div>
+
+      <div class="form-group col-md-6">
+        <label
+          >Total Market Potential of the Area per annum (in MT)<span
+            class="text-danger font-weight-bold"
+          >
+            *</span
+          ></label
+        >
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          placeholder="Enter Market Potential"
+          formControlName="PotentialArea"
+          (keypress)="KeyPressValidation($event, 'Number')"
+        />
+        <mat-error
+          *ngIf="
+            marketInformationForm?.get('PotentialArea')?.touched &&
+            marketInformationForm?.get('PotentialArea')?.hasError('required')
+          "
+        >
+          Total Market Potential of the area is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            marketInformationForm?.get('PotentialArea')?.hasError('isZero')
+          "
+        >
+          Value cannot be zero or negative
+        </mat-error>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label
+          >Total Potential of the Party per annum (In MT)<span
+            class="text-danger font-weight-bold"
+          >
+            *</span
+          ></label
+        >
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          placeholder="Enter Total Potential"
+          formControlName="PartyPotential"
+          (keypress)="KeyPressValidation($event, 'Number')"
+        />
+        <mat-error
+          *ngIf="
+            marketInformationForm?.get('PartyPotential')?.touched &&
+            marketInformationForm?.get('PartyPotential')?.hasError('required')
+          "
+        >
+          Total Potential of the Party is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            marketInformationForm?.get('PartyPotential')?.hasError('isZero')
+          "
+        >
+          Value cannot be zero or negative
+        </mat-error>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>No of Existing Stockist in the Market</label>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          placeholder="Enter No of Existing Stockist"
+          formControlName="NoOfExistingStockist"
+          (keypress)="KeyPressValidation($event, 'Number')"
+        />
+        <mat-error
+          *ngIf="
+            marketInformationForm
+              ?.get('NoOfExistingStockist')
+              ?.hasError('isZero')
+          "
+        >
+          Value cannot be zero or negative
+        </mat-error>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label
+          >Expected JK Avg.Monthly Sale (In MT)<span
+            class="text-danger font-weight-bold"
+          >
+            *</span
+          ></label
+        >
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          placeholder="Enter Expected JK Avg.Monthly Sale"
+          formControlName="ExpectedAvgSale"
+          (keypress)="KeyPressValidation($event, 'Number')"
+        />
+        <mat-error
+          *ngIf="
+            marketInformationForm?.get('ExpectedAvgSale')?.touched &&
+            marketInformationForm?.get('ExpectedAvgSale')?.hasError('required')
+          "
+        >
+          Expected average sale is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            marketInformationForm?.get('ExpectedAvgSale')?.hasError('isZero')
+          "
+        >
+          Value cannot be zero or negative
+        </mat-error>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Distance of Nearest JK Stockist (in kms)</label>
+        <input
+          type="Number"
+          class="form-control form-control-sm"
+          placeholder="Enter Distance of Nearest JK Stockist"
+          formControlName="NearestStockistDistance"
+          (keypress)="KeyPressValidation($event, 'Number')"
+        />
+        <mat-error
+          *ngIf="
+            marketInformationForm
+              ?.get('NearestStockistDistance')
+              ?.hasError('isZero')
+          "
+        >
+          Value cannot be zero or negative
+        </mat-error>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>GST Number<span *ngIf="isGstMandatory" class="text-danger font-weight-bold"> *</span></label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          placeholder="Enter GST Number of business"
+          formControlName="GstNo"
+          (focusout)="OnFocusOut($event, 'gst')"
+          (keypress)="KeyPressValidation($event, 'NumberAndName')"
+          oninput="this.value = this.value.trimStart().toUpperCase()"
+        />
+        <mat-error
+          *ngIf="marketInformationForm?.get('GstNo')?.hasError('pattern')"
+        >
+          GST number is Invalid
+        </mat-error>
+        <mat-error
+          *ngIf="
+            marketInformationForm?.get('GstNo')?.touched &&
+            marketInformationForm?.get('GstNo')?.hasError('required')
+          "
+        >
+          GST number is required.
+        </mat-error>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Name of Nearest JK Stockist</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          placeholder="Enter Nearest JK Stockist"
+          formControlName="NearestStockistName"
+          (keypress)="KeyPressValidation($event, 'Name')"
+          oninput="this.value = this.value.trimStart().toUpperCase()"
+        />
+      </div>
+
+      <div class="form-group col-md-6">
+        <label 
+          >PAN Number<span *ngIf="!category?.toLowerCase().includes('ship to')" class="text-danger font-weight-bold"> *</span></label
+        >
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          placeholder="Enter PAN Number of business"
+          formControlName="PanNo"
+          (keypress)="KeyPressValidation($event, 'NumberAndName')"
+          oninput="this.value = this.value.trimStart().toUpperCase()"
+          [readonly]="panReadOnly && role!='RA'"
+        />
+        <mat-error
+          *ngIf="
+            marketInformationForm?.get('PanNo')?.touched &&
+            marketInformationForm?.get('PanNo')?.hasError('required')
+          "
+        >
+          Pan No is required
+        </mat-error>
+        <mat-error
+          *ngIf="marketInformationForm?.get('PanNo')?.hasError('pattern')"
+        >
+          Pan No is Invalid
+        </mat-error>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Party Background</label>
+        <!-- <input type="text" class="form-control form-control-sm"  [readonly]="readable"> -->
+
+        <span>
+          <nb-select
+            class="w-100 mw-100 selectBox form-control"
+            placeholder="Select party background"
+            formControlName="PartyBackground"
+            (ngModelChange)="partyBackground($event)"
+            multiple
+          >
+            <nb-option
+              *ngFor="let partyBackground of partyBackgrounds"
+              [value]="partyBackground"
+            >
+              {{ partyBackground }}
+            </nb-option>
+          </nb-select>
+        </span>
+
+        <!-- </span> -->
+      </div>
+      <div class="form-group col-md-6">
+        <label
+          >CIN Number<span
+            *ngIf="isCinRequired()"
+            class="text-danger font-weight-bold"
+          >
+            *</span
+          ></label
+        >
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          placeholder="Enter CIN Number of business"
+          formControlName="CINNo"
+          (keypress)="KeyPressValidation($event, 'NumberAndName')"
+          oninput="this.value = this.value.trimStart().toUpperCase()"
+        />
+        <!-- <mat-error
+          *ngIf="
+          (firmstatus!='Pvt Ltd'|| firmstatus!='Limited')&& marketInformationForm?.get('CINNo').clearValidators()
+          "
+        >
+         CIN No is required
+        </mat-error> -->
+        <mat-error
+          *ngIf="
+            marketInformationForm?.get('CINNo').touched &&
+            marketInformationForm?.get('CINNo')?.hasError('required')
+          "
+        >
+          CIN No is required
+        </mat-error>
+        <mat-error
+          *ngIf="marketInformationForm?.get('CINNo')?.hasError('pattern')"
+        >
+          CIN No is Invalid
+        </mat-error>
+      </div>
+
+      <!-- <div class="form-group col-md-6">
+                <label>Distribution Channel</label>
+                <input type="text" class="form-control form-control-sm" placeholder="Enter Distribution Channel"
+                    [readonly]="readable">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label>Average Sales</label>
+                <input type="text" class="form-control form-control-sm" [readonly]="readable"
+                    formControlName="averageSales" (keypress)="KeyPressValidation($event,'Number')">
+            </div> -->
+
+      <div class="w-100 px-3 table-responsive" *ngIf="isPartyBackground">
+        <table
+          class="w-100 table-css nowrap"
+          mat-table
+          [dataSource]="averageDataSource"
+        >
+          <ng-container matColumnDef="BusinessType">
+            <th mat-header-cell *matHeaderCellDef>Business Type</th>
+            <td mat-cell *matCellDef="let value">{{ value.Business }}</td>
+          </ng-container>
+          <ng-container matColumnDef="BrandName">
+            <th mat-header-cell *matHeaderCellDef>Brand Name</th>
+            <td mat-cell *matCellDef="let value">{{ value.Brand }}</td>
+          </ng-container>
+          <ng-container matColumnDef="Unit">
+            <th mat-header-cell *matHeaderCellDef>Unit</th>
+            <td mat-cell *matCellDef="let value">
+              {{ value.Unit ? value.Unit : "- " }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="AvgMonthlySales">
+            <th mat-header-cell *matHeaderCellDef>Avg/Month sales (In MT)</th>
+            <td mat-cell *matCellDef="let value">
+              {{ value.AvgMonthlySales || "-" }}
+            </td>
+          </ng-container>
+          <!-- <ng-container
+            matColumnDef="avgSaleOnWC"
+          >
+            <th mat-header-cell *matHeaderCellDef>
+              WC Avg/Month Sales (In Mt)
+            </th>
+            <td mat-cell *matCellDef="let value">
+              {{ value.AvgSaleOnWC || "-" }}
+            </td>
+          </ng-container> -->
+          <ng-container matColumnDef="add">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              [hidden]="readable"
+              class="text-right"
+            >
+              <button
+                [disabled]="!readable && editclick"
+                class="btn btn-sm rounded-circle"
+                (click)="addBrandDetails(selectPartyBackground)"
+              >
+                <i class="bi bi-plus-circle h5 text-white"></i>
+              </button>
+            </th>
+            <td
+              class="action-icon text-right"
+              mat-cell
+              *matCellDef="let value; let dd = index"
+              [hidden]="readable"
+            >
+              {{ value.add }}
+              <button
+                mat-mini-fab
+                class="btn btn-sm"
+                (click)="editBrandDeatils(selectPartyBackground, value, dd)"
+                [disabled]="!readable && editclick"
+              >
+                <i class="bi bi-pen-fill text-info"></i>
+              </button>
+              <button
+                mat-mini-fab
+                class="btn btn-sm"
+                (click)="deleteBrandDetails(dd)"
+                [disabled]="!readable && editclick"
+              >
+                <i class="bi bi-trash text-danger"></i>
+              </button>
+            </td>
+          </ng-container>
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColoumns"
+            class="header-row-css"
+          ></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColoumns"></tr>
+        </table>
+      </div>
+
+      <div class="row w-100 m-0" *ngIf="show">
+        <div class="pt-3 w-100 px-3">
+          <button
+            class="btn btn-danger rounded-0 btn-sm"
+            [disabled]="editclick"
+            (click)="cancel()"
+          >
+            Cancel
+          </button>
+          <button
+            class="btn btn-success rounded-0 btn-sm float-right px-3"
+            (click)="saveMarketInfo()"
+            [disabled]="editclick"
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary rounded-0 btn-sm float-right mx-1"
+            (click)="editClicked()"
+          >
+            Edit <i class="bi bi-pencil ml-1"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

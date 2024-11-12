@@ -1,0 +1,2941 @@
+<!DOCTYPE html>
+<html lang="en" id="printContent">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+  </head>
+  <body style="margin: 0px">
+    <div
+      style="
+        background: #ffffff !important;
+        width: 800px;
+        font-family: 'Poppins';
+        position: relative;
+      "
+    >
+      <table width="100%" style="border-spacing: 0px">
+        <tr>
+          <td
+            style="
+              background-image: url('../../../assets/images/header_img.png');
+              background-size: cover;
+              background-position: center;
+              background-attachment: unset;
+              background-repeat: no-repeat;
+              display: flex;
+              padding: 10px;
+              align-items: center;
+            "
+          >
+            <table width="100%">
+              <tr>
+                <td width="90%" align="center">
+                  <span
+                    style="
+                      word-break: break-all;
+                      color: #ffffff;
+                      font-size: 18px;
+                      font-weight: 500;
+                      margin-left: 5rem;
+                    "
+                  >
+                    Customer Portal</span
+                  >
+                </td>
+                <td width="10%">
+                  <button
+                    (click)="print('printContent')"
+                    style="
+                      cursor: pointer;
+                      border: 2px solid rgb(255 255 255);
+                      font-size: 12px;
+                      padding: 3px 20px;
+                      text-align: center;
+                      background: rgb(24 128 207);
+                      border-radius: 50px;
+                      color: rgb(255 255 255);
+                      font-weight: 500;
+                    "
+                  >
+                    Print
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td>
+                  <img
+                    src="https://www.jkcement.com/frontTheme/img/jkcemet-logo.png"
+                    width="200px"
+                  />
+                </td>
+                <td style="line-height: 15px">
+                  <div style="text-align: right">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Date</span
+                    >
+                  </div>
+                  <div style="text-align: right">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ currentDateTime }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="
+                    padding-bottom: 5px;
+                    border-bottom: 1px solid rgb(201 201 201);
+                  "
+                  colspan="3"
+                >
+                  <span
+                    style="
+                      word-break: break-all;
+                      font-weight: 600;
+                      font-size: 18px;
+                    "
+                    >Personal Information</span
+                  >
+                </td>
+              </tr>
+              <!-- <tr width="100%" style="padding: 0rem 3rem 0rem 3rem;font-family: 'Poppins'; margin-bottom: 0rem;">
+                                                 <hr>
+                                          </tr> -->
+              <tr>
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Category Type</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ personalInfo.Category }}</span
+                    >
+                  </div>
+                </td>
+
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Product Type</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ personalInfo.Product }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="line-height: 15px" width="33.33%"></td>
+              </tr>
+              <tr>
+                <td
+                  style="border-bottom: 1px solid rgb(201 201 201)"
+                  colspan="3"
+                ></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 0rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="padding-bottom: 10px; padding-top: 15px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Firm Name</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ personalInfo.Name }}</span
+                    >
+                  </div>
+                </td>
+
+                <td
+                  style="padding-bottom: 10px; padding-top: 15px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Firm Status</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ personalInfo.FirmStatus }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >State</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ personalInfo.State }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >District</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ personalInfo.District }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >City</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ personalInfo.City }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Taluka</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ personalInfo.Taluk }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Teshil</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ personalInfo.Tehsil }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Pincode</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ personalInfo.Pincode }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Geo Location</span
+                    >
+                  </div>
+
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                    >
+                      <span
+                        style="
+                          word-break: break-all;
+                          font-weight: 500;
+                          font-size: 10px;
+                          color: rgb(182 88 69);
+                        "
+                        >Lat:</span
+                      >{{ personalInfo.Latitude }}
+                    </span>
+
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                    >
+                      <span
+                        style="
+                          word-break: break-all;
+                          font-weight: 500;
+                          font-size: 10px;
+                          color: rgb(182 88 69);
+                        "
+                        >Long:</span
+                      >{{ personalInfo.Logitude }}
+                    </span>
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="66.66%" colspan="2">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Address</span
+                    >
+                  </div>
+
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ personalInfo.Address }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 0rem 3rem 0rem 3rem;
+                font-weight: 500;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td style="vertical-align: bottom">
+                  <table
+                    border="1"
+                    width="100%"
+                    style="
+                      text-align: center;
+                      font-size: 10px;
+                      border-collapse: collapse;
+                      color: rgb(0, 0, 0);
+                      border-color: rgb(0, 0, 0);
+                    "
+                  >
+                    <thead
+                      style="
+                        font-size: 12px;
+                        font-weight: 400;
+                        background: rgb(144 182 69);
+                      "
+                    >
+                      <tr>
+                        <th style="font-weight: 600; padding: 5px">S.no</th>
+                        <th style="font-weight: 600; padding: 5px">Name</th>
+                        <th style="font-weight: 600; padding: 5px">Mobile</th>
+                        <th style="font-weight: 600; padding: 5px">Email</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let firm of contactDetails; let i = index">
+                        <td style="padding: 5px; font-weight: 500">
+                          {{ i + 1 }}
+                        </td>
+                        <td style="padding: 5px; font-weight: 500">
+                          {{ firm.PersonName }}
+                        </td>
+                        <td style="padding: 5px; font-weight: 500">
+                          {{ firm.Mobile }}
+                        </td>
+                        <td style="padding: 5px; font-weight: 500">
+                          {{ firm.Email }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="
+                    padding-bottom: 5px;
+                    border-bottom: 1px solid rgb(201 201 201);
+                  "
+                  colspan="3"
+                >
+                  <span
+                    style="
+                      word-break: break-all;
+                      font-weight: 600;
+                      font-size: 18px;
+                    "
+                    >Market Information</span
+                  >
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Market Name</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.Market }}</span
+                    >
+                  </div>
+                </td>
+
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Year of Establishment</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.YearOfEstablishment }}</span
+                    >
+                  </div>
+                </td>
+
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Population of Market</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.Population }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Areas thet Stockist will serve</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.ServeArea }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Market Potantial of the area (in MT)</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.PotentialArea }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Total Potantial of the Party (in MT)</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.PartyPotential }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >No of existing Stockist in the market</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.NoOfExistingStockist }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Expected JK Avg Monthly sale (in Mt)</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.NearestStockistName }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Distance of Nearest JK Stockist (in Kms)</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.NearestStockistDistance }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >GST Number</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.GstNo }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Name of Nearest JK Stockist</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.NearestStockistName }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="66.66%" colspan="2">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >PAN Number</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.PanNo }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="66.66%" colspan="2">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Party Background</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ marketInfo.PartyBackground }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="
+                    padding-bottom: 5px;
+                    border-bottom: 1px solid rgb(201 201 201);
+                  "
+                  colspan="3"
+                >
+                  <span
+                    style="
+                      word-break: break-all;
+                      font-weight: 600;
+                      font-size: 18px;
+                    "
+                    >Business Information</span
+                  >
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Total Turn Over (1st year)</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ businessInfo.Turnover1 }}</span
+                    >
+                  </div>
+                </td>
+
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Total Turn Over (2nd year)</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ businessInfo.Turnover2 }}</span
+                    >
+                  </div>
+                </td>
+
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Total Turn Over (3rd year)</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ businessInfo.Turnover3 }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Total Storage Capacity (in MT)</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ businessInfo.StorageCapacity }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Working Captial to be Invested(in Lacks)</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ businessInfo.CapitalToBeInvest }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >No of Vehicle Owned</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ businessInfo.VehiclesOwned }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >No of Retailers</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ businessInfo.NoOfRetailsers }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >% Sales in Wholesale</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ businessInfo.SalesWholesale }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >% Sales in Retail</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ businessInfo.SalesRetail }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr style="page-break-before: always">
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="
+                    padding-bottom: 5px;
+                    border-bottom: 1px solid rgb(201 201 201);
+                  "
+                  colspan="3"
+                >
+                  <span
+                    style="
+                      word-break: break-all;
+                      font-weight: 600;
+                      font-size: 18px;
+                    "
+                    >Security Deposit</span
+                  >
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 0rem 3rem 0rem 3rem;
+                font-weight: 500;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="
+                    vertical-align: bottom;
+                    padding-top: 15px;
+                    padding-bottom: 10px;
+                  "
+                >
+                  <table
+                    border="1"
+                    width="100%"
+                    style="
+                      text-align: center;
+                      font-size: 10px;
+                      border-collapse: collapse;
+                      color: rgb(0, 0, 0);
+                      border-color: rgb(0, 0, 0);
+                    "
+                  >
+                    <thead
+                      style="
+                        font-size: 12px;
+                        font-weight: 400;
+                        background: rgb(144 182 69);
+                      "
+                    >
+                      <tr>
+                        <th style="font-weight: 600; padding: 5px">S.no</th>
+                        <th style="font-weight: 600; padding: 5px">
+                          Deposit Type
+                        </th>
+                        <th style="font-weight: 600; padding: 5px">
+                          Bank Name
+                        </th>
+                        <th style="font-weight: 600; padding: 5px">Date</th>
+                        <th style="font-weight: 600; padding: 5px">Amount</th>
+                        <th style="font-weight: 600; padding: 5px">Number</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        *ngFor="let deposit of securityDeposit; let i = index"
+                      >
+                        <td style="padding: 5px; font-weight: 500">
+                          {{ i + 1 }}
+                        </td>
+                        <td style="padding: 5px; font-weight: 500">
+                          {{ deposit.DocumentType }}
+                        </td>
+                        <td style="padding: 5px; font-weight: 500">
+                          {{ deposit.BankName }}
+                        </td>
+                        <td style="padding: 5px; font-weight: 500">
+                          {{ deposit.DocumentDate }}
+                        </td>
+                        <td style="padding: 5px; font-weight: 500">
+                          {{ deposit.Amount }}
+                        </td>
+                        <td style="padding: 5px; font-weight: 500">
+                          {{ deposit.DocumentNo }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="
+                    padding-bottom: 5px;
+                    border-bottom: 1px solid rgb(201 201 201);
+                  "
+                  colspan="3"
+                >
+                  <span
+                    style="
+                      word-break: break-all;
+                      font-weight: 600;
+                      font-size: 18px;
+                    "
+                    >Bank Details of Firm / Party</span
+                  >
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >IFSC Code</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ bankDetails.IFSC }}</span
+                    >
+                  </div>
+                </td>
+
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Account Number</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ bankDetails.AccNumber }}</span
+                    >
+                  </div>
+                </td>
+
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Bank Name</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ bankDetails.BankName }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Branch Name</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ bankDetails.Branch }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Account Holder Name</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ bankDetails.AccHolder }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Nominee Name</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ bankDetails.NomineeName }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Nominee Relation</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ bankDetails.NomineeRelation }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="
+                    padding-bottom: 5px;
+                    border-bottom: 1px solid rgb(201 201 201);
+                  "
+                  colspan="3"
+                >
+                  <span
+                    style="
+                      word-break: break-all;
+                      font-weight: 600;
+                      font-size: 18px;
+                    "
+                    >Additional Details</span
+                  >
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Account Group</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.AccountGroup }}</span
+                    >
+                  </div>
+                </td>
+
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Distribution Channel</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.DistributionChannel }}</span
+                    >
+                  </div>
+                </td>
+
+                <td
+                  style="padding-top: 15px; padding-bottom: 10px"
+                  width="33.33%"
+                >
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Sales Org</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.SalesOrg }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Division</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.Division }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Region</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.Region }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Company</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.Company }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Industry</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.Industry }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Company Group</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.CustomerGroup }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Account Assessment Group Customer</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.AccountAssessmentGroupCustomer }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Attribute6</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.Attribute6 }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Attribute9</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.Attribute9 }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Customer Pricing Procedure</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.CustomerPricingProcedure }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Customer Statistics Group</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.CustomerStatisticsGroup }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Delivery Plant</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.DeliveryPlant }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Delivery Priority</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.DeliveryPriority }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Incoterms</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.Incoterms }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >POD Time Frame</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.PODTimeFrame }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Payment Terms</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.PaymentTerms }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Price Group</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.PriceGroup }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Price List</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.PriceList }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Reconciliation Account</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.ReconciliationAccount }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Sales District</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.SalesDistrict }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Sales Group</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.SalesGroup }}</span
+                    >
+                  </div>
+                </td>
+
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Sales Office</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.SalesOffice }}</span
+                    >
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 10px" width="33.33%">
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                      >Shipping Condition</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      >{{ additionalData.ShippingCondition }}</span
+                    >
+                  </div>
+                </td>                
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Pan Card -->
+        <tr style="page-break-before: always">
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="
+                    padding-bottom: 5px;
+                    border-bottom: 1px solid rgb(201 201 201);
+                  "
+                  colspan="3"
+                >
+                  <span
+                    style="
+                      word-break: break-all;
+                      font-weight: 600;
+                      font-size: 18px;
+                    "
+                    >Required Documents</span
+                  >
+                </td>
+              </tr>
+
+              <tr *ngIf="panfile != ''">
+                <td
+                  style="
+                    padding-top: 15px;
+                    padding-bottom: 5px;
+                    vertical-align: top;
+                  "
+                  width="33.33%"
+                >
+                  <div style="padding-bottom: 10px">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      ><i
+                        class="bi bi-check-square"
+                        style="margin-right: 10px; color: #008000"
+                      ></i
+                      >Pan Card</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      width: 100%;
+                      height: auto;
+                      padding: 15px;
+                      background: #f2f2f2;
+                    "
+                  >
+                    <img [src]="panfile" alt="Pan Card Image" width="100%" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- GST Certificate -->
+        <tr style="page-break-before: always" *ngIf="gstfile != ''">
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    vertical-align: top;
+                  "
+                  width="33.33%"
+                >
+                  <div style="padding-bottom: 10px">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      ><i
+                        class="bi bi-check-square"
+                        style="margin-right: 10px; color: #008000"
+                      ></i
+                      >GST Certificate</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      width: 100%;
+                      height: auto;
+                      padding: 15px;
+                      background: #f2f2f2;
+                    "
+                  >
+                    <img
+                      [src]="gstfile"
+                      alt="GST certificate image"
+                      width="100%"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Aadhar Card -->
+        <tr style="page-break-before: always" *ngIf="aadharfile != ''">
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="padding-top: 5px; padding-bottom: 5px"
+                  width="33.33%"
+                >
+                  <div style="padding-bottom: 10px">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      ><i
+                        class="bi bi-x-square"
+                        style="margin-right: 10px; color: #ff0000"
+                      ></i
+                      >Aadhar Card</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      width: 100%;
+                      height: auto;
+                      padding: 15px;
+                      background: #f2f2f2;
+                    "
+                  >
+                    <img
+                      [src]="aadharfile"
+                      alt="Aadhar card image"
+                      width="100%"
+                    />
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  style="padding-top: 5px; padding-bottom: 5px"
+                  width="33.33%"
+                >
+                  <div style="padding-bottom: 10px">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      ><i
+                        class="bi bi-check-square"
+                        style="margin-right: 10px; color: #008000"
+                      ></i
+                      >Cancelled Cheque</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      width: 100%;
+                      height: auto;
+                      padding: 15px;
+                      background: #f2f2f2;
+                    "
+                  >
+                    <img
+                      [src]="chequefile"
+                      alt="Cancelled cheque image"
+                      width="100%"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Partner Photo -->
+        <tr style="page-break-before: always" *ngIf="photofile != ''">
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="padding-top: 5px; padding-bottom: 5px"
+                  width="33.33%"
+                >
+                  <div style="padding-bottom: 10px">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      ><i
+                        class="bi bi-check-square"
+                        style="margin-right: 10px; color: #008000"
+                      ></i
+                      >Photo of Partner</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      width: 100%;
+                      height: auto;
+                      padding: 15px;
+                      background: #f2f2f2;
+                    "
+                  >
+                    <img [src]="photofile" alt="Partner photo" width="100%" />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- TDS Declaration -->
+        <tr style="page-break-before: always" *ngIf="tdsfile != ''">
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="padding-top: 5px; padding-bottom: 5px"
+                  width="33.33%"
+                >
+                  <div style="padding-bottom: 10px">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      ><i
+                        class="bi bi-x-square"
+                        style="margin-right: 10px; color: #ff0000"
+                      ></i
+                      >TDS Decleration on Stockist Letter head</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      width: 100%;
+                      height: auto;
+                      padding: 15px;
+                      background: #f2f2f2;
+                    "
+                  >
+                    <img
+                      [src]="tdsfile"
+                      alt="TDS declaration image"
+                      width="100%"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Address Proof -->
+        <tr style="page-break-before: always" *ngIf="addressfile != ''">
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="padding-top: 5px; padding-bottom: 5px"
+                  width="33.33%"
+                >
+                  <div style="padding-bottom: 10px">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      ><i
+                        class="bi bi-x-square"
+                        style="margin-right: 10px; color: #ff0000"
+                      ></i
+                      >Address Proof of Stockist premises</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      width: 100%;
+                      height: auto;
+                      padding: 15px;
+                      background: #f2f2f2;
+                    "
+                  >
+                    <img
+                      [src]="addressfile"
+                      alt="Address proof image"
+                      width="100%"
+                    />
+                  </div>
+                </td>
+              </tr>
+
+              <tr></tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Agreement File -->
+        <tr style="page-break-before: always" *ngIf="agreementfile != ''">
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="padding-top: 5px; padding-bottom: 5px"
+                  width="33.33%"
+                >
+                  <div style="padding-bottom: 10px">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      ><i
+                        class="bi bi-check-square"
+                        style="margin-right: 10px; color: #008000"
+                      ></i
+                      >Signed Digital Agreement on Non- judicial Paper</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      width: 100%;
+                      height: auto;
+                      padding: 15px;
+                      background: #f2f2f2;
+                    "
+                  >
+                    <img
+                      [src]="agreementfile"
+                      alt="Signed agreement image"
+                      width="100%"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Partnership deed -->
+        <tr style="page-break-before: always" *ngIf="partnershipDeedfile!= ''">
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="padding-top: 5px; padding-bottom: 5px"
+                  width="33.33%"
+                >
+                  <div style="padding-bottom: 10px">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      ><i
+                        class="bi bi-check-square"
+                        style="margin-right: 10px; color: #008000"
+                      ></i
+                      >Partnership deed</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      width: 100%;
+                      height: auto;
+                      padding: 15px;
+                      background: #f2f2f2;
+                    "
+                  >
+                    <img
+                      [src]="partnershipDeedfile"
+                      alt="Partnership deed image"
+                      width="100%"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- MOA File -->
+
+        <tr style="page-break-before: always" *ngIf="MOAfile != ''">
+          <td>
+            <table
+              width="100%"
+              style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+            >
+              <tr>
+                <td
+                  style="padding-top: 5px; padding-bottom: 5px"
+                  width="33.33%"
+                >
+                  <div style="padding-bottom: 10px">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                      ><i
+                        class="bi bi-check-square"
+                        style="margin-right: 10px; color: #008000"
+                      ></i
+                      >MOA File</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      width: 100%;
+                      height: auto;
+                      padding: 15px;
+                      background: #f2f2f2;
+                    "
+                  >
+                    <img
+                      [src]="MOAfile"
+                      alt="MOA File image"
+                      width="100%"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr> 
+      </table>
+    </div>
+
+    <!-- <div class="section-loader-point" id="nb-global-spinner" *ngIf="loader">
+      <div
+        class="spinner-grow text-primary"
+        style="width: 4rem; height: 4rem"
+        role="status"
+      ></div>
+    </div> -->
+    
+    <div class="loader-point" id="nb-global-spinner" *ngIf="loader">
+      <div
+        class="spinner-grow text-primary"
+        style="width: 4rem; height: 4rem"
+        role="status"
+      ></div>
+      <span class="sr-only">Submitting...</span>
+    </div>
+  </body>
+</html>

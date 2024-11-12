@@ -1,0 +1,172 @@
+<!-- <p>customer-log works!</p> -->
+<div class="cross-heading-full">
+     <span>User Log</span>
+</div>
+<nb-card class="log-scroll">
+     <nb-card-body class="pr-2 pl-3">
+          <div class="line_left mt-1" *ngFor="let data of logsData; let i = index">
+               <span *ngIf="data.Action.includes('Initiated') || data.Action.includes('initiated')" class="dot_area">
+                    <span class="initiate-bg-dot"></span>
+               </span>
+
+               <span *ngIf="data.Action.includes('approved') || data.Action.includes('Approved')" class="dot_area">
+                    <span class="approve-bg-dot"></span>
+               </span>
+
+               <span *ngIf="data.Action.includes('pending') || data.Action.includes('Pending')" class="dot_area">
+                    <span class="pending-bg-dot"></span>
+               </span>
+
+               <span *ngIf="!data.Action.includes('updated') && !data.Action.includes('Updated') && !data.Action.includes('Approved') && !data.Action.includes('approved') && !data.Action.includes('Draft') && !data.Action.includes('draft') && !data.Action.includes('Pending') && !data.Action.includes('pending') && !data.Action.includes('Initiated') && !data.Action.includes('initiated') && !data.Action.includes('Rejected') && !data.Action.includes('rejected')" class="dot_area">
+                    <span class="others-bg-dot"></span>
+               </span>
+
+               <span *ngIf="data.Action.includes('updated') || data.Action.includes('Updated')" class="dot_area">
+                    <span class="updated-bg-dot"></span>
+               </span>
+
+               <span *ngIf="data.Action.includes('Draft') || data.Action.includes('draft')" class="dot_area">
+                    <span class="draft-bg-dot"></span>
+               </span>
+
+               <span *ngIf="data.Action.includes('Rejected') || data.Action.includes('rejected')" class="dot_area">
+                    <span class="rejected-bg-dot"></span>
+               </span>
+               <!-- <div class="row block_area">
+                <div class="left-text col-5 pr-1">
+                    <span>Activity:</span>
+                </div>
+                <div class="right-text col-7 px-1">
+                    <span>{{data.Action}}</span>
+                </div>
+
+                <div class="left-text col-5 pr-1">
+                    <span>Approved By:</span>
+                </div>
+                <div class="right-text col-7 px-1">
+                    <span>{{data.ApprovedBy}}</span>
+                </div>
+
+                <div class="left-text col-5 pr-1">
+                    <span>DelegatedTo:</span>
+                </div>
+                <div class="right-text col-7 px-1">
+                    <span>{{data.DelegatedTo}}</span>
+                </div>
+
+                <div class="left-text col-5 pr-1">
+                    <span>Designation:</span>
+                </div>
+                <div class="right-text col-7 px-1">
+                    <span>{{data.Designation}}</span>
+                </div>
+
+                <div class="left-text col-5 pr-1">
+                    <span>Start Date:</span>
+                </div>
+                <div class="right-text col-7 px-1">
+                    <span>{{data.StartDate}}</span>
+                </div>
+
+                <div class="left-text col-5 pr-1">
+                    <span>End Date:</span>
+                </div>
+                <div class="right-text col-7 px-1">
+                    <span *ngIf="data.EndDate != null ">{{data.EndDate}}</span>
+                    <span *ngIf="data.EndDate == null ">-</span>
+                </div>
+
+                <div *ngIf="!data.Remarks" class="left-text col-5 pr-1">
+                    <span>Remarks:</span>
+                </div>
+                <div *ngIf="!data.Remarks" class="right-text col-7col-7 px-1">
+                    <span>{{data.Remarks}}</span>
+                </div>
+            </div> -->
+
+               <div class="ml-3" [ngClass]="[
+          (data.Action.includes('Approved') ? 'border-approved' : '') ||
+          (data.Action.includes('Rejected') ? 'border-rejected' : '') ||
+            (data.Action.includes('Pending') ? 'border-pending' : '') ||
+            (data.Action.includes('Draft') ? 'border-draft' : '') ||
+            (data.Action.includes('Initiated') ? 'border-initiated' : '') ||
+            (data.Action.includes('updated') ? 'border-updated' : '') ||
+            (data.Action.includes(' ') ? 'border-others' : '')
+        ]">
+                    <table class="block_area w-100" [ngClass]="[
+            (data.Action.includes('Approved') ? 'approved-bg' : '') ||
+            (data.Action.includes('Rejected') ? 'rejected-bg' : '') ||
+              (data.Action.includes('Pending') ? 'pending-bg' : '') ||
+              (data.Action.includes('Draft') ? 'draft-bg' : '') ||
+              (data.Action.includes('Initiated') ? 'initiated-bg' : '') ||
+              (data.Action.includes('updated') ? 'updated-bg' : '') ||
+              (data.Action.includes(' ') ? 'others-bg' : '')
+          ]">
+                         <tr *ngIf="data.Action !== null">
+                              <td width="100px" class="left-text v-top"><span>Activity</span></td>
+                              <td width="5px" class="font-weight-bold v-top">:</td>
+                              <td class="right-text short-text v-top">
+                                   <span title="{{ data.Action }}">{{ data.Action }}</span>
+                              </td>
+                         </tr>
+
+                         <tr *ngIf="data.Message!== null">
+                              <td width="100px" class="left-text v-top"><span>Message</span></td>
+                              <td width="5px" class="font-weight-bold v-top">:</td>
+                              <td class="right-text short-text v-top">
+                                   <span title="{{ data.Message }}">{{ data.Message }}</span>
+                              </td>
+                         </tr>
+
+                         <tr *ngIf="data.ActionedBy !== null">
+                              <td class="left-text v-top"><span>Actioned By</span></td>
+                              <td class="font-weight-bold v-top">:</td>
+                              <td class="right-text v-top">
+                                   <span>{{ data.ActionedBy }}</span>
+                              </td>
+                         </tr>
+
+                         <!-- <tr *ngIf='data.DelegatedTo !== "" '>
+                        <td class="left-text"><span>Delegated To</span></td>
+                        <td class="font-weight-bold">:</td>
+                        <td class="right-text">
+                            <span>{{data.DelegatedTo}}</span>
+                        </td>
+                    </tr> -->
+
+                         <tr *ngIf="data.Role !== null">
+                              <td class="left-text v-top"><span>Designation</span></td>
+                              <td class="font-weight-bold v-top">:</td>
+                              <td class="right-text v-top">
+                                   <span>{{ data.Role }}</span>
+                              </td>
+                         </tr>
+
+                         <tr *ngIf="data.ActionedDate !== null">
+                              <td class="left-text v-top"><span>Date</span></td>
+                              <td class="font-weight-bold v-top">:</td>
+                              <td class="right-text v-top">
+                                   <span>{{ data.ActionedDate | date : "short" }}</span>
+                              </td>
+                         </tr>
+
+                         <!-- <tr *ngIf="data.EndDate !== null">
+                        <td class="left-text"><span>EndDate</span></td>
+                        <td class="font-weight-bold">:</td>
+                        <td class="right-text">
+                            <span>{{data.EndDate | date}}</span>
+                        </td>
+                    </tr>
+
+                    <tr *ngIf="data.Remarks !== null">
+                        <td class="left-text" *ngIf="!data.Remarks"><span>Remarks</span></td>
+                        <td class="font-weight-bold">:</td>
+                        <td class="right-text">
+                            <span>{{data.Remarks}}</span>
+                        </td>
+                    </tr> -->
+                    </table>
+               </div>
+          </div>
+     </nb-card-body>
+</nb-card>

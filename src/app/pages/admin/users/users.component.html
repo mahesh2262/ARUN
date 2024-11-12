@@ -1,0 +1,171 @@
+<div class="cross-heading-lg">
+     <span>User Maintanance</span>
+  <span class="downlodIcon" (click)="downloadUserDetails()"><nb-icon icon ="download-outline"></nb-icon></span>
+</div>
+<div class="boxcard mb-5 zero-radius-top p-0 overflow-hidden">
+     <div class="row m-0">
+          <div class="col-md-3 border-right">
+               <div class="row py-3">
+                    <div class="col-10">
+                         <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" (keyup)="searchFilter($event.target.value)">
+                    </div>
+                    <div class="col-2 p-0">
+                         <button class="add-button" nbButton status="info" (click)="addUser()"><nb-icon icon="plus"></nb-icon></button>
+                    </div>
+               </div>
+               <div class="row">
+                    <nb-list id="hover-area" class="hover-area info-scroll-md">
+                         <nb-list-item *ngFor="let users of userDataFilter" (click)="setUserDetails(users)">
+                              <div class="userName-text row w-100 m-0">
+                                   <div class="col-9 pl-0">
+                                        <span class="active-dot" *ngIf="users.IsActive"></span>
+                                        <span class="inactive-dot" *ngIf="!users.IsActive"></span>
+                                        <span class="text-userName "><i class="bi bi-person-fill"></i>
+                                             {{users.FirstName}} {{users.MiddleName}}
+                                             {{users.LastName}}</span>
+                                   </div>
+                                   <div class="col-3 p-0 text-right">
+                                        <span class="user-id-bg">{{users.EmpId}}</span>
+                                   </div>
+                                   <!-- <div class="col-12 text-role mt-1">
+                                                        <span><small>{{users.RoleId | uppercase}}</small></span>
+                                                 </div> -->
+                                   <!-- <div class="col-12">
+                                                        <span>{{users.Email}}</span>
+                                                 </div>
+                                                 <div class="col-12">
+                                                        <span>{{users.Mobile}}</span>
+                                                 </div>
+
+                                                 <div class="col-12">
+                                                        <span>{{users.PositionId}}</span>
+                                                 </div>
+
+                                                 <div class="col-12">
+                                                        <span>{{users.ManagerId}}</span>
+                                                 </div> -->
+                              </div>
+                         </nb-list-item>
+                    </nb-list>
+               </div>
+          </div>
+          <div class="col-md-9">
+               <nb-card-header class="detail-header py-4"> {{title}}</nb-card-header>
+               <div class="py-4">
+                    <form class="row container input-area m-0 p-0" [formGroup]="userInformationForm">
+                         <div class="form-group col-md-6">
+                                          <label>Employee Id<span class="text-danger font-weight-bold">
+                                                        *</span></label>
+
+                                          <input type="text" class="form-control" formControlName="EmpId"
+                                                 [ngModel]="EmpId" (keypress)="KeyPressValidation($event, 'Number')"
+                                                 [readonly]="isClicked" />
+                                          <mat-error *ngIf="userInformationForm?.get('EmpId')?.touched && userInformationForm?.get('EmpId')?.hasError('required')">
+                                                 Employee ID is required
+                                          </mat-error>
+                                   </div>
+                                   <div class="form-group col-md-6">
+                                          <label>First Name<span class="text-danger font-weight-bold">
+                                                        *</span></label>
+                                          <input type="text" class="form-control" formControlName="FirstName"
+                                                 (keypress)="KeyPressValidation($event, 'Name')" [ngModel]="FirstName">
+                                                 <mat-error *ngIf="userInformationForm?.get('FirstName')?.touched && userInformationForm?.get('FirstName')?.hasError('required')">
+                                                        First name is required
+                                                 </mat-error>
+                                   </div>
+                                   <div class="form-group col-md-6">
+                                          <label>Middle Name</label>
+                                          <input type="text" class="form-control" formControlName="MiddleName"
+                                                 (keypress)="KeyPressValidation($event, 'Name')" [ngModel]="MiddleName">
+                                   </div>
+                                   <div class="form-group col-md-6">
+                                          <label>Last Name</label>
+                                          <input type="text" class="form-control" formControlName="LastName"
+                                                 (keypress)="KeyPressValidation($event, 'Name')" [ngModel]="LastName">
+                                   </div>
+                                   <div class="form-group col-md-6">
+                                          <label>Email ID<span class="text-danger font-weight-bold">
+                                                        *</span></label>
+                                          <input type="email" class="form-control" formControlName="Email" oninput="this.value = this.value.trimStart().toLowerCase()"
+                                                 [ngModel]="Email">
+                                                 <mat-error *ngIf="userInformationForm?.get('Email')?.touched && userInformationForm?.get('Email')?.hasError('required')">
+                                                        Email ID is required
+                                                 </mat-error>
+                                                 <mat-error *ngIf="userInformationForm?.get('Email')?.hasError('pattern')">
+                                                        Email ID is invalid
+                                                 </mat-error>
+                                   </div>
+                                   <div class="form-group col-md-6">
+                                          <label>Mobile No<span class="text-danger font-weight-bold">
+                                                        *</span></label>
+                                          <input type="text" class="form-control" formControlName="Mobile"
+                                                 maxLength="10" minlength="10" [ngModel]="Mobile"
+                                                 (keypress)="KeyPressValidation($event, 'Number')">
+                                                 <mat-error *ngIf="userInformationForm?.get('Mobile')?.touched && userInformationForm?.get('Mobile')?.hasError('required')">
+                                                        Mobile number is required
+                                                 </mat-error>
+                                          <mat-error *ngIf="userInformationForm?.get('Mobile')?.hasError('pattern')">
+                                                 Mobile number is invalid
+                                          </mat-error>
+                                   </div>
+                                   <div class="form-group col-md-6">
+                                          <label>Role<span class="text-danger font-weight-bold">
+                                                        *</span></label>
+
+                                          <nb-select class="w-100 mw-100 selectBox form-control"
+                                                 placeholder="Select category" formControlName="RoleId"
+                                                 [ngModel]="RoleId">
+                                                 <nb-option *ngFor="let role of RolesData" class="font-weight-normal"
+                                                        [value]="role.RoleId">
+                                                        {{ role.Desc }}
+                                                 </nb-option>
+                                          </nb-select>
+                                          <mat-error *ngIf="userInformationForm?.get('RoleId')?.touched && userInformationForm?.get('RoleId')?.hasError('required')">
+                                                 Role ID is required
+                                          </mat-error>
+                                   </div>
+                                   <div class="form-group col-md-6">
+                                          <label>Position ID<span class="text-danger font-weight-bold">
+                                                        *</span></label>
+                                          <input type="text" class="form-control" formControlName="PositionId"
+                                                 [ngModel]="PositionId"
+                                                 (keypress)="KeyPressValidation($event, 'Number')">
+                                                 <mat-error *ngIf="userInformationForm?.get('PositionId')?.touched && userInformationForm?.get('PositionId')?.hasError('required')">
+                                                        Position ID is required
+                                                 </mat-error>
+                                   </div>
+                                   <div class="form-group col-md-6">
+                                          <label>Manager Position ID<span class="text-danger font-weight-bold">
+                                                        *</span></label>
+                                          <input type="text" class="form-control" formControlName="ManagerId"
+                                                 [ngModel]="ManagerId"
+                                                 (keypress)="KeyPressValidation($event, 'Number')">
+                                                 <mat-error *ngIf="userInformationForm?.get('ManagerId')?.touched && userInformationForm?.get('ManagerId')?.hasError('required')">
+                                                        Manager ID is required
+                                                 </mat-error>
+                                   </div>
+                         <div class="form-group col-md-6">
+                              <div class="mb-2">
+                                   <label>User Account Status</label>
+                              </div>
+
+                              <label class="tog-switch">
+                                   <input type="checkbox" id="togBtn" (change)="toggle($event)"  [checked]="isUserActive">
+                                   <div class="slider round">
+                                        <span class="active">Active</span>
+                                        <span class="inactive">Inactive</span>
+                                   </div>
+                              </label>
+                         </div>
+                    </form>
+                    <div class="update-button p-3" *ngIf=" !buttonAction">
+                         <!-- <button class="btn btn-danger btn-sm mr-2 px-4" (click)="cancel()">Cancel</button> -->
+                         <button class="btn btn-success btn-sm px-4 rounded-0" (click)="updateUserDetails('update')">Update</button>
+                    </div>
+                    <div class="create-Button p-3" *ngIf="buttonAction">
+                         <button class="btn btn-success btn-sm px-4 rounded-0" (click)="updateUserDetails('add')">Create</button>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>

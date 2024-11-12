@@ -1,0 +1,98 @@
+<div class="header-container row w-100">
+  <div class="logo-container col-md-4 col-6 px-md-3 px-0">
+    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+      <nb-icon icon="menu-2-outline"></nb-icon>
+    </a>
+    <a class="logo" href="#" (click)="navigateHome()"><img src="../../../../assets/images/jkc_logoWhite.svg"
+        height="20px" class="white-logo"></a>
+  </div>
+
+  <div class=" col-4 text-center mob-hide">
+    <span class="text-white h6">CUSTOMER ONBOARDING PORTAL </span>
+  </div>
+
+  <div class="col-md-4 col-6 text-right px-md-3 px-0 d-flex align-items-center justify-content-end">
+    <div class="dropdown-alt">
+      <span class="px-3 border-right mr-3 dropbtn-alt"><i class="bi bi-bell-fill text-white"></i></span>
+      <div class="dropdown-content-alt p-2 bg-white">
+        <div class="drop-notify">
+          <a href="#" class="border-bottom p-2">
+            <p class="fs-12 mb-0"><span class="readed-dot"></span><span class="font-weight-bold">Praveenkumar
+                :</span>Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit.
+              aliqua. </p>
+          </a>
+          <a href="#" class="border-bottom p-2">
+            <p class="fs-12 mb-0"><span class="unreaded-dot"></span><span class="font-weight-bold">Praveenkumar
+                :</span>Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit.
+              aliqua. </p>
+          </a>
+          <a href="#" class="border-bottom p-2">
+            <p class="fs-12 mb-0"><span class="readed-dot"></span><span class="font-weight-bold">Praveenkumar
+                :</span>Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit.
+              aliqua. </p>
+          </a>
+          <a href="#" class="border-bottom p-2">
+            <p class="fs-12 mb-0"><span class="unreaded-dot"></span><span class="font-weight-bold">Praveenkumar
+                :</span>Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit.
+              aliqua. </p>
+          </a>
+          <a href="#" class="border-bottom p-2">
+            <p class="fs-12 mb-0"><span class="readed-dot"></span><span class="font-weight-bold">Praveenkumar
+                :</span>Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit.
+              aliqua. </p>
+          </a>
+          <a href="#" class="border-bottom p-2">
+            <p class="fs-12 mb-0"><span class="unreaded-dot"></span><span class="font-weight-bold">Praveenkumar
+                :</span>Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit.
+              aliqua. </p>
+          </a>
+          <a href="#" class="border-bottom p-2">
+            <p class="fs-12 mb-0"><span class="readed-dot"></span><span class="font-weight-bold">Praveenkumar
+                :</span>Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit.
+              aliqua. </p>
+          </a>
+          <a href="#" class="border-bottom p-2">
+            <p class="fs-12 mb-0"><span class="unreaded-dot"></span><span class="font-weight-bold">Praveenkumar
+                :</span>Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit.
+              aliqua. </p>
+          </a>
+        </div>
+        <a href="#" class="p-2 w-100 text-center border-top">See More</a>
+      </div>
+    </div>
+
+    <div class="dropdown-alt">
+      <button class="dropbtn-alt">
+        <span class="user-text"> 
+          <span class="user-name-text">{{userName}} </span>
+          <span class="role-text">{{role}}</span></span>
+          <img
+          src="../../../../assets/images/userImage.png"
+          class="user-img"></button>
+      <div class="dropdown-content-alt">
+        <a (click)="profile()" *ngIf="role!='Customer'">My Profile</a>
+        <!-- <a href="#">Settings</a> -->
+        <div class="p-2">
+          <button href="#" class="btn btn-danger btn-sm text-white p-2 text-left w-100" (click)="logOut()">Logout <i
+              class="bi bi-power ml-auto float-right"></i></button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="header-container">
+  <nb-actions size="small">
+  </nb-actions>
+</div> -->

@@ -1,0 +1,667 @@
+<div class="tab-pane fade show active">
+  <div>
+    <div class="cross-heading">
+      <span>Documents Required</span>
+    </div>
+  </div>
+  <div class="boxcard mb-5 zero-radius-top">
+    <!--
+        <button class="btn btn-link btn-sm p-0" (click)="documentFileDetails()"><span
+                class="column_Name font-weight-normal">click</span></button> -->
+
+    <form #bank>
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name"
+            >Copy of PAN Card<span *ngIf="!categories?.toLowerCase().includes('ship to')" class="text-danger font-weight-bold">
+              *</span
+            ></span
+          >
+          <p>(Only PNG / JPEG is allowed)</p>
+          <mat-error id="panErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('PanCard')"
+          >
+            <span class="column_Name font-weight-normal">{{ panfile }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button class="btn btn-download" (click)="pan.click()">
+            <i class="bi bi-upload mr-2"></i>
+            {{ panfile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name"
+            >Copy of GST / PO Document<span class="text-danger font-weight-bold">
+              *</span
+            ></span
+          >
+          <p>(Only PNG / JPEG is allowed)</p>
+          <mat-error id="gstErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('GSTCertificate')"
+          >
+            <span class="column_Name font-weight-normal">{{ gstfile }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button class="btn btn-download" (click)="gst.click()" for="gst">
+            <i class="bi bi-upload mr-2"></i>
+            {{ gstfile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <span *ngIf="!categories.toLowerCase().includes('KAM') " class="text-danger font-weight-bold">
+              *</span>
+
+<!--      <span *ngIf="isKamIc" class="text-danger font-weight-bold"> *</span>-->
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name">Copy of Aadhar Card {{categories}} </span><span *ngIf="!categories.includes('KAM IC') " class="text-danger font-weight-bold">
+              *</span>
+
+          <p>(Only PNG / JPEG is allowed)</p>
+          <mat-error id="adharErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('AadharCard')"
+          >
+            <span class="column_Name font-weight-normal">{{ aadharfile }}</span>
+          </button>
+        </div>
+
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button
+            class="btn btn-download"
+            (click)="aadhar.click()"
+            for="aadhar"
+          >
+            <i class="bi bi-upload mr-2"></i>
+            {{ aadharfile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name"
+            >Blank Cheque<span
+              class="text-danger font-weight-bold"
+              *ngIf="!isCancelledChequeMust && !categories?.toLowerCase().includes('ship to')"
+            >
+              *</span
+            ></span
+          >
+          <p>(Only PNG / JPEG is allowed)</p>
+          <mat-error id="chequeErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('CancelledCheque')"
+          >
+            <span class="column_Name font-weight-normal">{{ chequefile }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button
+            class="btn btn-download"
+            (click)="cheque.click()"
+            for="cheque"
+          >
+            <i class="bi bi-upload mr-2"></i>
+            {{ chequefile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name"
+            >Photograph of Proprietor/Partner<span *ngIf="!categories?.toLowerCase().includes('ship to')"
+              class="text-danger font-weight-bold"
+            >
+              *</span
+            ></span
+          >
+          <mat-error id="photoErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('PartnerPhoto')"
+          >
+            <span class="column_Name font-weight-normal">{{ photofile }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button class="btn btn-download" (click)="photo.click()" for="photo">
+            <i class="bi bi-upload mr-2"></i>
+            {{ photofile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name"
+            >TDS declaration on Stockist letter head<span
+              class="text-danger font-weight-bold"
+              *ngIf="!categories?.toLowerCase().includes('ship to')">*</span
+            ></span
+          >
+          <mat-error id="tdsErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('TDSDeclaration')"
+          >
+            <span class="column_Name font-weight-normal">{{ tdsfile }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button
+            class="btn btn-download"
+            (click)="letterHead.click()"
+            for="letterHead"
+          >
+            <i class="bi bi-upload mr-2"></i>
+            {{ tdsfile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name"
+            >Address Proof of stockist premises<span
+              class="text-danger font-weight-bold"
+            *ngIf="!categories?.toLowerCase().includes('ship to')">
+              *</span
+            ></span
+          >
+          <mat-error id="addressErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('AddressProof')"
+          >
+            <span class="column_Name font-weight-normal">{{
+              addressfile
+            }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button
+            class="btn btn-download"
+            (click)="address.click()"
+            for="address"
+          >
+            <i class="bi bi-upload mr-2"></i>
+            {{ addressfile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name"
+            >Signed Digital Agreement on Non-Judicial paper
+          </span>
+          <mat-error id="agreementErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('SignedDocument')"
+          >
+            <span class="column_Name font-weight-normal">{{
+              agreementfile
+            }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button
+            class="btn btn-download"
+            (click)="aggreement.click()"
+            for="aggreement"
+          >
+            <i class="bi bi-upload mr-2"></i>
+            {{ agreementfile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name"
+            >Partnership Deed
+            <span
+              class="text-danger font-weight-bold"
+              *ngIf="properties == 'Partnership' && !categories?.toLowerCase().includes('ship to')"
+            >
+              *</span
+            ></span
+          >
+          <mat-error id="partnershipDeedErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('partnershipDeed')"
+          >
+            <span class="column_Name font-weight-normal">{{
+              partnershipDeedfile
+            }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button
+            class="btn btn-download"
+            (click)="partnershipDeed.click()"
+            for="partnershipDeed"
+          >
+            <i class="bi bi-upload mr-2"></i>
+            {{ partnershipDeedfile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name"
+            >Memorandum of Agreement
+            <span
+              class="text-danger font-weight-bold"
+              *ngIf="properties == 'Pvt Ltd' || properties == 'Limited' || !categories?.toLowerCase().includes('ship to')"
+            >
+              *</span
+            ></span
+          >
+          <mat-error id="MOAErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('MOA')"
+          >
+            <span class="column_Name font-weight-normal">{{ MOAfile }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button class="btn btn-download" (click)="MOA.click()" for="MOA">
+            <i class="bi bi-upload mr-2"></i>
+            {{ MOAfile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name"
+            >Sales and Target
+            <span
+              class="text-danger font-weight-bold"
+              *ngIf="
+                categories == 'Stockist' ||
+                categories == 'Retail Stockist' ||
+                categories == 'D2R Channel Partner'
+              "
+            >
+              *</span
+            ></span
+          >
+          <mat-error id="SalesTargetErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('SalesTarget')"
+          >
+            <span class="column_Name font-weight-normal">{{
+              SalesTargetfile
+            }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button
+            class="btn btn-download"
+            (click)="SalesTarget.click()"
+            for="SalesTarget"
+          >
+            <i class="bi bi-upload mr-2"></i>
+            {{ SalesTargetfile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name">
+            Factory visit report
+            <span
+              *ngIf="categories == 'KAM IC' || categories == 'IC'"
+              class="text-danger font-weight-bold"
+            >
+              *</span
+            ></span
+          >
+          <mat-error id="FactoryvisitreportErrorMsg"></mat-error>
+        </div>
+
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('Factoryvisitreport')"
+          >
+            <span class="column_Name font-weight-normal">{{
+              Factoryvisitreportfile
+            }}</span>
+          </button>
+        </div>
+
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button
+            class="btn btn-download"
+            (click)="Factoryvisitreport.click()"
+            for="Factoryvisitreport"
+          >
+            <i class="bi bi-upload mr-2"></i>
+            {{ Factoryvisitreportfile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name">
+            Self-consumption certificate
+            <span
+              *ngIf="categories == 'KAM IC' || categories == 'IC'"
+              class="text-danger font-weight-bold"
+            >
+              *</span
+            ></span
+          >
+          <mat-error id="SelfconsumptionErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('Selfconsumption')"
+          >
+            <span class="column_Name font-weight-normal">{{
+              Selfconsumptionfile
+            }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button
+            class="btn btn-download"
+            (click)="Selfconsumption.click()"
+            for="Selfconsumption"
+          >
+            <i class="bi bi-upload mr-2"></i>
+            {{ Selfconsumptionfile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name">
+            Rate approval
+            <span
+              *ngIf="categories == 'KAM IC' || categories == 'IC'"
+              class="text-danger font-weight-bold"
+            >
+              *</span
+            ></span
+          >
+          <mat-error id="RateapprovalErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('Rateapproval')"
+          >
+            <span class="column_Name font-weight-normal">{{
+              Rateapprovalfile
+            }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button
+            class="btn btn-download"
+            (click)="Rateapproval.click()"
+            for="Rateapproval"
+          >
+            <i class="bi bi-upload mr-2"></i>
+            {{ Rateapprovalfile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-xl-4 mb-3">
+          <span class="column_Name">
+            GST document (in PDF format)
+            <span
+              class="text-danger font-weight-bold"
+            >
+              *</span
+            ></span
+          >
+          <mat-error id="GstPdfErrorMsg"></mat-error>
+        </div>
+        <div class="col-xl-5 mb-3">
+          <button
+            class="btn btn-link btn-sm p-0 border-0"
+            (click)="openAttachmentDialog('GstPdf')"
+          >
+            <span class="column_Name font-weight-normal">{{
+              GstPdffile
+            }}</span>
+          </button>
+        </div>
+        <div class="col-xl-3 text-md-right mb-3" *ngIf="show">
+          <button
+            class="btn btn-download"
+            (click)="GstPdf.click()"
+            for="GstPdf"
+          >
+            <i class="bi bi-upload mr-2"></i>
+            {{ GstPdffile ? "reupload" : "upload" }}
+          </button>
+        </div>
+      </div>
+      <!-- <div class="row w-100 m-0" *ngIf="show">
+                    <div class="pt-3 w-100">
+                         <button class="btn btn-danger rounded-0 btn-sm">Cancel</button>
+
+                         <button class="btn btn-success rounded-0 btn-sm float-right px-3" (click)="fileUpload()">Save</button>
+
+                    </div>
+               </div> -->
+    </form>
+  </div>
+
+  <div class="loader-point" id="nb-global-spinner" *ngIf="loader">
+    <div
+      class="spinner-grow text-primary"
+      style="width: 4rem; height: 4rem"
+      role="status"
+    ></div>
+    <span class="sr-only">Submitting...</span>
+  </div>
+</div>
+
+<!-- hidden inputs for File Upload-->
+<div>
+  <input
+    type="file"
+    onclick="this.value=null"
+    #gst
+    name="gst"
+    id="gst"
+    hidden
+    accept="image/png, image/jpg, image/jpeg"
+    (change)="FileInputChange($event, 'GSTCertificate')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #pan
+    name="pan"
+    id="pan"
+    hidden
+    accept="image/png, image/jpg, image/jpeg"
+    (change)="FileInputChange($event, 'PanCard')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #aadhar
+    name="aadhar"
+    id="aadhar"
+    hidden
+    accept="image/png, image/jpg , image/jpeg"
+    (change)="FileInputChange($event, 'AadharCard')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #cheque
+    name="cheque"
+    id="cheque"
+    hidden
+    accept="image/png, image/jpg , image/jpeg"
+    (change)="FileInputChange($event, 'CancelledCheque')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #photo
+    name="photo"
+    id="photo"
+    hidden
+    accept="image/png, image/jpg , image/jpeg,.doc,.docx,application/pdf"
+    (change)="FileInputChange($event, 'PartnerPhoto')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #letterHead
+    name="letterHead"
+    id="letterHead"
+    hidden
+    accept="image/png, image/jpg , image/jpeg,.doc,.docx,application/pdf"
+    (change)="FileInputChange($event, 'TDSDeclaration')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #address
+    name="address"
+    id="address"
+    hidden
+    accept="image/png, image/jpg , image/jpeg,.doc,.docx,application/pdf"
+    (change)="FileInputChange($event, 'AddressProof')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #aggreement
+    name="aggreement"
+    id="aggreement"
+    hidden
+    accept="image/png, image/jpg , image/jpeg,.doc,.docx,application/pdf"
+    (change)="FileInputChange($event, 'SignedDocument')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #partnershipDeed
+    name="partnershipDeed"
+    id="partnershipDeed"
+    hidden
+    accept="image/png, image/jpg , image/jpeg,.doc,.docx,application/pdf"
+    (change)="FileInputChange($event, 'partnershipDeed')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #MOA
+    name="MOA"
+    id="MOA"
+    hidden
+    accept="image/png, image/jpg , image/jpeg,.doc,.docx,application/pdf"
+    (change)="FileInputChange($event, 'MOA')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #SalesTarget
+    name="SalesTarget"
+    id="SalesTarget"
+    hidden
+    accept="image/png,image/jpg,image/jpeg,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,,.doc,.docx"
+    (change)="FileInputChange($event, 'SalesTarget')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #Factoryvisitreport
+    name="Factoryvisitreport"
+    id="Factoryvisitreport"
+    hidden
+    accept="image/png,image/jpg,image/jpeg,,.doc,.docx,application/pdf"
+    (change)="FileInputChange($event, 'Factoryvisitreport')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #Selfconsumption
+    name="Selfconsumption"
+    id="Selfconsumption"
+    hidden
+    accept="image/png,image/jpg,image/jpeg,,.doc,.docx,application/pdf"
+    (change)="FileInputChange($event, 'Selfconsumption')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #Rateapproval
+    name="Rateapproval"
+    id="Rateapproval"
+    hidden
+    accept="image/png,image/jpg,image/jpeg,,.doc,.docx,application/pdf"
+    (change)="FileInputChange($event, 'Rateapproval')"
+  />
+  <input
+    type="file"
+    onclick="this.value=null"
+    #GstPdf
+    name="GstPdf"
+    id="GstPdf"
+    hidden
+    accept="application/pdf"
+    (change)="FileInputChange($event, 'GstPdf')"
+  />
+</div>

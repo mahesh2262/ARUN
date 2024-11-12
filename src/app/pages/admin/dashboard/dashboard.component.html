@@ -1,0 +1,269 @@
+<!-- <div class="container-fluid mb-5 px-3 px-md-3 boxcard" *ngIf="role != 'SH'"> -->
+
+
+
+
+    <div class="container-fluid mb-5 px-3 px-md-3 boxcard">
+    <div class="row">
+
+      <div class="col-md col-6" (click)="data('All')">
+        <div>
+          <div class="dash-card mb-md-0 mb-4 all-bg">
+            <div class="card-body">
+              <h5 class="card-title h6"><span class="all-bg-dot"></span>All</h5>
+              <div class="py-md-3 py-1 text-center">
+                <span class="count-text text-primary">{{
+                  dashboardTableData?.All
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="col-md col-6" (click)="data('Draft')">
+        <div>
+          <div class="dash-card mb-md-0 mb-4 draft-bg">
+            <div class="card-body">
+              <h5 class="card-title h6">
+                <span class="draft-bg-dot"></span>Drafted
+              </h5>
+              <div class="py-md-3 py-1 text-center">
+                <span class="count-text text-purp">{{
+                  dashboardTableData?.Draft
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="col-md col-6" (click)="data('Initiated')">
+        <div>
+          <div class="dash-card mb-md-0 mb-4 initiate-bg">
+            <div class="card-body">
+              <h5 class="card-title h6">
+                <span class="initiate-bg-dot"></span>Initiated
+              </h5>
+              <div class="py-md-3 py-1 text-center">
+                <span class="count-text text-info">{{
+                  dashboardTableData?.Initiated
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="col-md col-6" (click)="data('Pending')">
+        <div>
+          <div class="dash-card mb-md-0 mb-4 pending-bg">
+            <div class="card-body">
+              <h5 class="card-title h6">
+                <span class="pending-bg-dot"></span>Pending
+              </h5>
+              <div class="py-md-3 py-1 text-center">
+                <span class="count-text text-warning">{{
+                  dashboardTableData?.Pending
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md col-6" (click)="data('Approved')">
+        <div>
+          <div class="dash-card mb-md-0 mb-4 approve-bg">
+            <div class="card-body">
+              <h5 class="card-title h6">
+                <span class="approve-bg-dot"></span>Approved
+              </h5>
+              <div class="py-md-3 py-1 text-center">
+                <span class="count-text text-success">{{
+                  dashboardTableData?.Approved
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md col-6" (click)="data('Rejected')">
+        <div>
+          <div class="dash-card mb-md-0 mb-4 reject-bg">
+            <div class="card-body">
+              <h5 class="card-title h6">
+                <span class="reject-bg-dot"></span>Rejected
+              </h5>
+              <div class="py-md-3 py-1 text-center">
+                <span class="count-text text-danger">{{
+                  dashboardTableData?.Rejected
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div *ngIf ='download'  class = spinnerBlock>
+      <span class="loader">
+      </span>
+  <span class ="txt"> It will take some minutes .....</span>
+</div>
+
+
+<div _ngcontent-wpb-c414="" class="cross-heading-lg">
+    <span>Dashboard</span>
+
+  <span class="downlodIcon" (click)="excelDownload()" ><nb-icon icon ="download-outline"></nb-icon></span>
+</div>
+
+
+
+<div class="boxcard zero-radius-top">
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <div class="mt-2">
+<!--        <span _ngcontent-wpb-c414="" class="h6">{{ tableTitleHeader }}</span>-->
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-md-0 mb-3" >
+<!--      <nb-select-->
+<!--        class="w-100 mw-100 form-control"-->
+<!--        placeholder="Filter on Table"-->
+<!--        (selectedChange)="selectedStatus($event)"-->
+<!--      >-->
+<!--        <nb-option *ngFor="let filter of filters" [value]="filter">-->
+<!--          {{ filter }}-->
+<!--        </nb-option>-->
+<!--      </nb-select>-->
+    </div>
+
+    <div class="col-md-3">
+      <div class="input-group mb-1">
+        <input
+          type="search"
+          placeholder="Search.."
+          aria-label="Search"
+          class="form-control log-input"
+          (keyup)="searchFilter($event.target.value)"
+        />
+        <span class="input-group-text log-input"
+        ><i class="bi bi-search"></i
+        ></span>
+      </div>
+    </div>
+  </div>
+
+
+<!--  <div class="col-md-3">-->
+<!--    <div class="input-group mb-1">-->
+<!--      <input-->
+<!--        type="search"-->
+<!--        placeholder="Search.."-->
+<!--        aria-label="Search"-->
+<!--        class="form-control log-input"-->
+<!--        (keyup)="searchFilter($event.target.value)"-->
+<!--      />-->
+<!--      <span class="input-group-text log-input"-->
+<!--      ><i class="bi bi-search"></i-->
+<!--      ></span>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<div class="row tab-align">
+    <nb-card class="table-responsive dash-tab-scroll">
+    <!-- <nb-route-tabset fullWidth [tabs]="tabs" (changeTab)="tableView($event)"></nb-route-tabset> -->
+    <table
+        mat-table
+        [dataSource]="dataSource"
+        class="mat-elevation-z8 nowrap"
+        matSort
+    >
+        <ng-container matColumnDef="TransId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Transaction Id
+        </th>
+        <td mat-cell *matCellDef="let element">
+            {{ formPrefix(element.TransId) + element.TransId }}
+        </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Firm Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+        </ng-container>
+        <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Category
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.Category }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="CreatedOn">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Created On</th>
+        <td mat-cell *matCellDef="let element">
+            {{ dateFormat(element.CreatedOn) }}
+        </td>
+        </ng-container>
+
+        <ng-container matColumnDef="State">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+        <td mat-cell *matCellDef="let element">{{ element.State }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">
+            <div class="row">
+            <div class="col-12">
+
+                <div
+                *ngIf="element.Status.includes('Approved')"
+                class="status-approved mr-3"
+                >
+                <i class="bi bi-check-circle mr-2"></i>{{ element.Status }}
+                </div>
+
+                <div
+                *ngIf="
+                    element.Status == 'Initiated' || element.Status == 'Draft'
+                "
+                class="status-open mr-3"
+                >
+                <i class="bi bi-record-circle mr-2"></i>Open
+                </div>
+
+                <div
+                *ngIf="element.Status == 'SAP'"
+                class="status-pending mr-3"
+                >
+                <i class="bi bi-pause-circle mr-2"></i>SAP
+                </div>
+
+                <div
+                *ngIf="element.Status.includes('Rejected')"
+                class="status-reject mr-3"
+                >
+                <i class="bi bi-x-circle mr-2"></i>{{ element.Status }}
+                </div>
+
+                <div
+                *ngIf="element.Status.includes('Pending')"
+                class="status-pending mr-3"
+                >
+                <i class="bi bi-pause-circle mr-2"></i>{{ element.Status }}
+                </div>
+            </div>
+            </div>
+        </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    </nb-card>
+    <mat-paginator [length]="paginatorLength" [pageSizeOptions]="[5, 10]" (page)="onPageChange($event)"></mat-paginator>
+</div>
+
+</div>
+
+

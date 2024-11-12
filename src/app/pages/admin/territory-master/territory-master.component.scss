@@ -1,0 +1,72 @@
+.table {
+  width: 100%;
+}
+.downlodIcon{
+  margin : 6%;
+}
+
+.header-text {
+  padding: 0px 20px;
+}
+
+.line {
+  width: 100%;
+  border: 1px solid grey;
+  margin: 9px;
+}
+
+// .filter-tab{
+//   display :flex;
+//   justify-content: center;
+//   // background-color:#edf7f6;
+// }
+.card-body {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 7px;
+}
+
+.Success-Box {
+  display: initial;
+  background-color: #89f5b8;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.header-row-css {
+  background-color: #ffffff00 !important;
+}
+
+.table-css {
+  background-image: url('../../../../assets/images/graph/graph16.png');
+
+  td.mat-cell {
+    padding: 16px 0;
+    border-bottom: 1px solid beige;
+    border-top: 1px solid beige;
+  }
+
+  td.mat-cell:first-child {
+    border-left: 1px solid beige;
+    padding: 0px 26px;
+  }
+
+  td.mat-cell:last-child {
+    border-right: 1px solid beige;
+  }
+
+  tr.mat-header-cell {
+    border: beige;
+  }
+
+  th.mat-header-cell {
+    background-color: aliceblue;
+    border: beige;
+  }
+
+  table {
+    border-spacing: 0 8px !important;
+    border: beige;
+  }
+
+}

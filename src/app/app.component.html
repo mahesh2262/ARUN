@@ -1,0 +1,6 @@
+<ngx-one-column-layout>
+     <nb-menu *ngIf="role == 'ASM'" [items]="initiatorMenuItem"></nb-menu>
+     <nb-menu *ngIf="role == 'Admin'" [items]="adminMenuItem"></nb-menu>
+     <nb-menu *ngIf="role != 'Admin' && role != 'ASM'" [items]="menu"></nb-menu>
+     <router-outlet></router-outlet>
+</ngx-one-column-layout>

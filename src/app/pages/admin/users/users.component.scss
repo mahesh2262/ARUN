@@ -1,0 +1,105 @@
+.user-header {
+     display: flex;
+}
+
+.add-button {
+     margin-left: 7%;
+     margin-right: -9%;
+     border-radius: 54%;
+}
+
+.downlodIcon{
+  margin : 6%;
+}
+
+.detail-header {
+     display: flex;
+     justify-content: center;
+     // background-color: aliceblue;
+}
+
+.userName-text {
+     font-size: 15px;
+     display: flex;
+     justify-content: space-around;
+
+}
+
+.input-area {
+     display: flex;
+}
+
+.card-area {
+     margin-left: 1%;
+     width: 74%;
+}
+
+#hover-area {
+     :hover {
+          background-color: aliceblue;
+     }
+
+     :focus {
+          color: blue;
+     }
+
+}
+
+.update-button,
+.create-Button {
+     display: flex;
+     justify-content: flex-end;
+     position: absolute;
+     width: 100%;
+     bottom: 20px;
+     right: 20px;
+}
+
+.text-userName {
+     font-weight: 500;
+     text-transform: capitalize;
+     color: #1055a0;
+}
+
+.text-role {
+     color: #696969;
+}
+
+.text-userId {
+     font-weight: bold;
+     margin-left: 86%;
+}
+
+.active-dot {
+     width: 10px !important;
+     height: 10px !important;
+     border-radius: 50px;
+     border: 1px solid #1ad144;
+     background-color: #10dd3f !important;
+     display: inline-block;
+     margin-right: 15px;
+}
+
+.inactive-dot {
+     width: 10px !important;
+     height: 10px !important;
+     border-radius: 50px;
+     border: 1px solid #d11a1a;
+     background-color: #dd1010 !important;
+     display: inline-block;
+     margin-right: 15px;
+}
+
+@media(max-width: 576px) {
+
+     .update-button,
+     .create-Button {
+          display: flex;
+          justify-content: flex-end;
+          position: initial;
+          width: 100%;
+          bottom: 20px;
+          right: 20px;
+     }
+
+}

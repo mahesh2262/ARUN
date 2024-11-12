@@ -1,0 +1,305 @@
+.screenLogin {
+       height: 100vh;
+       background-image: url('../../../../assets/images/login_bg.png');
+       background-color: #ffffff;
+       background-repeat: no-repeat;
+       background-position: right;
+       background-size: contain;
+       background-attachment: fixed;
+       position: absolute;
+       width: 100%;
+       top: 0;
+       left: 0;
+}
+
+.bp-cloud-text {
+       font-size: 45px;
+       font-weight: 400;
+}
+
+.tiny-text {
+       color: #acacac;
+       opacity: 1;
+       font-size: 10px;
+       letter-spacing: .3px;
+}
+
+.text-gray {
+       color: #727272 !important;
+}
+
+.log-label {
+       font-size: 14px;
+}
+
+.v-mid-full-screen {
+       height: 100vh;
+       display: flex;
+       align-items: center;
+}
+
+.credential-card {
+       background-color: #ffffff;
+       padding: 3rem !important;
+       width: 100% !important;
+       border: 1px solid #dee2e6;
+}
+
+.jkc-logo {
+       height: 40px;
+}
+
+.custom-mb {
+       margin-bottom: 1.5rem !important;
+}
+
+.welcome-text {
+       font-size: 20px;
+       text-align: center;
+       margin-bottom: 1.5rem !important;
+}
+
+.log-input {
+       background: #f3f3f6 !important;
+       border: 0;
+       font-size: 16px;
+       padding: 10px 15px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+       -webkit-box-shadow: 0 0 0 30px #f3f3f6 inset !important;
+}
+
+.input-group span {
+       border-top-right-radius: 0px;
+       border-bottom-right-radius: 0px;
+}
+
+.input-group input {
+       border-top-left-radius: 0px;
+       border-bottom-left-radius: 0px;
+}
+
+.log-input.form-control:focus {
+       color: var(--bs-body-color);
+       background-color: var(--bs-form-control-bg);
+       border-color: #86b7fe00 !important;
+       outline: 0;
+       box-shadow: 0 0 0 .25rem rgba(13, 110, 253, 0) !important;
+}
+
+.login-btn {
+       font-size: 14px;
+       text-align: center;
+       background-color: #1055a0 !important;
+       color: #fff !important;
+       border-radius: 0px !important;
+}
+
+.login-btn:hover {
+       font-size: 14px;
+       text-align: center;
+       background-color: #0c427c !important;
+       color: #fff !important;
+       border-radius: 0px !important;
+}
+
+.link {
+       color: #0c427c;
+       cursor: pointer;
+       text-decoration: none;
+       font-size: 12px;
+       font-weight: 500;
+}
+
+::placeholder {
+       color: #727272 !important;
+       opacity: 1 !important;
+}
+
+:-ms-input-placeholder {
+       color: #727272;
+}
+
+::-ms-input-placeholder {
+       color: #727272;
+}
+
+
+
+/* RESPONSIVE */
+
+/* LOGIN PAGE */
+
+@media (max-width: 575.98px) {
+       .screenLogin {
+              height: 100vh;
+              background-image: url(../../../../assets/images/top_mob.png);
+              background-repeat: no-repeat;
+              background-position: top;
+              background-size: contain;
+              background-attachment: fixed;
+              overflow: scroll;
+       }
+
+       .v-mid-full-screen {
+              height: auto;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+       }
+
+       .log-img {
+              text-align: center !important;
+       }
+
+       .log-img img {
+              width: 175px !important;
+       }
+
+       .bp-cloud-text {
+              font-size: 20px;
+              font-weight: 400;
+       }
+
+       .tiny-text {
+              color: #acacac;
+              opacity: 1;
+              font-size: 10px;
+              letter-spacing: .3px;
+              text-align: center;
+       }
+
+       .credential-card {
+              background-color: #ffffff00;
+              padding: 0rem !important;
+              width: 100% !important;
+              border: 0px solid #dee2e6;
+       }
+
+       .welcome-text {
+              font-size: 20px;
+              text-align: center;
+              margin-bottom: 1rem !important;
+              display: inline-grid;
+              justify-content: center;
+       }
+
+}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {}
+
+@media (min-width: 768px) and (max-width: 991.98px) {}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+       .welcome-text {
+              font-size: 16px;
+              text-align: center;
+              margin-bottom: 1.5rem !important;
+       }
+
+       .jkc-logo {
+              height: 30px;
+       }
+
+       .text-gray {
+              color: #727272 !important;
+              font-size: 14px;
+       }
+
+       .credential-card {
+              background-color: #ffffff;
+              padding: 2rem !important;
+              width: 100% !important;
+              border: 1px solid #dee2e6;
+       }
+
+       .custom-mb {
+              margin-bottom: 1rem !important;
+       }
+
+       .log-input {
+              background: #f3f3f6 !important;
+              border: 0;
+              font-size: 14px;
+              padding: 5px 10px;
+       }
+}
+
+@media (min-width: 1200px) and (max-width: 1280.98px) {
+       .welcome-text {
+              font-size: 16px;
+              text-align: center;
+              margin-bottom: 1.5rem !important;
+       }
+
+       .jkc-logo {
+              height: 30px;
+       }
+
+       .text-gray {
+              color: #727272 !important;
+              font-size: 14px;
+       }
+
+       .credential-card {
+              background-color: #ffffff;
+              padding: 2rem !important;
+              width: 100% !important;
+              border: 1px solid #dee2e6;
+       }
+
+       .custom-mb {
+              margin-bottom: 1rem !important;
+       }
+
+       .log-input {
+              background: #f3f3f6 !important;
+              border: 0;
+              font-size: 14px;
+              padding: 5px 10px;
+       }
+}
+
+@media (min-width: 1281px) and (max-width: 1366.98px) {
+       .welcome-text {
+              font-size: 16px;
+              text-align: center;
+              margin-bottom: 1.5rem !important;
+       }
+
+       .jkc-logo {
+              height: 30px;
+       }
+
+       .text-gray {
+              color: #727272 !important;
+              font-size: 14px;
+       }
+
+       .credential-card {
+              background-color: #ffffff;
+              padding: 2rem !important;
+              width: 100% !important;
+              border: 1px solid #dee2e6;
+       }
+
+       .custom-mb {
+              margin-bottom: 1rem !important;
+       }
+
+       .log-input {
+              background: #f3f3f6 !important;
+              border: 0;
+              font-size: 14px;
+              padding: 5px 10px;
+       }
+}
+
+@media (min-width: 1440.98px) {}
+
+/* RESPONSIVE  END*/

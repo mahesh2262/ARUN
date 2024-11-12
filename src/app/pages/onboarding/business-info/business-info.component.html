@@ -1,0 +1,259 @@
+<div class="tab-pane fade show active" #business_information>
+  <div>
+    <div class="cross-heading">
+      <span>Business Information</span>
+    </div>
+  </div>
+  <div class="boxcard mb-5 zero-radius-top">
+    <form class="row" [formGroup]="businessInformationForm">
+      <div class="form-group col-md-12">
+        <label
+          >Total turnover in last 3 year (in Lakhs)<span
+            class="text-danger font-weight-bold"
+          >
+            *</span
+          ></label
+        >
+        <div class="row">
+          <div class="col-md-4 mt-md-0 mt-2">
+            <input
+              type="number"
+              class="form-control form-control-sm"
+              [readonly]="readable || editclick"
+              placeholder="Year 1"
+              formControlName="Turnover1"
+              (keypress)="KeyPressValidation($event, 'Number')"
+            />
+            <mat-error
+              *ngIf="
+                businessInformationForm?.get('Turnover1')?.touched &&
+                businessInformationForm?.get('Turnover1')?.hasError('required')
+              "
+            >
+              Year-1 is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                businessInformationForm?.get('Turnover1')?.hasError('isZero')
+              "
+            >
+              Value cannot be negative
+            </mat-error>
+          </div>
+          <div class="col-md-4 mt-md-0 mt-2">
+            <input
+              type="number"
+              class="form-control form-control-sm"
+              [readonly]="readable || editclick"
+              placeholder="Year 2"
+              formControlName="Turnover2"
+              (keypress)="KeyPressValidation($event, 'Number')"
+            />
+            <mat-error
+              *ngIf="
+                businessInformationForm?.get('Turnover2')?.touched &&
+                businessInformationForm?.get('Turnover2')?.hasError('required')
+              "
+            >
+              Year-2 is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                businessInformationForm?.get('Turnover2')?.hasError('isZero')
+              "
+            >
+              Value cannot be negative
+            </mat-error>
+          </div>
+          <div class="col-md-4 mt-md-0 mt-2">
+            <input
+              type="number"
+              class="form-control form-control-sm"
+              [readonly]="readable || editclick"
+              placeholder="Year 3"
+              formControlName="Turnover3"
+              (keypress)="KeyPressValidation($event, 'Number')"
+            />
+            <mat-error
+              *ngIf="
+                businessInformationForm?.get('Turnover3')?.touched &&
+                businessInformationForm?.get('Turnover3')?.hasError('required')
+              "
+            >
+              Year-3 is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                businessInformationForm?.get('Turnover3')?.hasError('isZero')
+              "
+            >
+              Value cannot be negative
+            </mat-error>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label
+          >Total Storage Capacity (in MT)<span
+            class="text-danger font-weight-bold"
+          >
+            *</span
+          ></label
+        >
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          [readonly]="readable || editclick"
+          placeholder="Enter Total Storage Capacity"
+          formControlName="StorageCapacity"          
+        />
+        <mat-error
+          *ngIf="
+            businessInformationForm?.get('StorageCapacity')?.touched &&
+            businessInformationForm
+              ?.get('StorageCapacity')
+              ?.hasError('required')
+          "
+        >
+          Total Storage Capacity is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            businessInformationForm?.get('StorageCapacity')?.hasError('isZero')
+          "
+        >
+          Value cannot be zero or negative
+        </mat-error>
+      </div>
+      <div class="form-group col-md-6">
+        <label
+          >Working Capital to be Invested (in Lakhs)<span
+            class="text-danger font-weight-bold"
+          >
+            *</span
+          ></label
+        >
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          [readonly]="readable || editclick"
+          placeholder="Enter Working Capital Invest"
+          formControlName="CapitalToBeInvest"
+          (keypress)="KeyPressValidation($event, 'Number')"
+        />
+        <mat-error
+          *ngIf="
+            businessInformationForm?.get('CapitalToBeInvest')?.touched &&
+            businessInformationForm
+              ?.get('CapitalToBeInvest')
+              ?.hasError('required')
+          "
+        >
+          Working Capital to be Invested is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            businessInformationForm
+              ?.get('CapitalToBeInvest')
+              ?.hasError('isZero')
+          "
+        >
+          Value cannot be zero or negative
+        </mat-error>
+      </div>
+      <div class="form-group col-md-6">
+        <label
+          >No of Vehicle Owned<span class="text-danger font-weight-bold">
+            *</span
+          ></label
+        >
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          [readonly]="readable || editclick"
+          placeholder="Enter Vechiles Owned"
+          formControlName="VehiclesOwned"
+          (keypress)="KeyPressValidation($event, 'Number')"
+        />
+        <mat-error
+          *ngIf="
+            businessInformationForm?.get('VehiclesOwned')?.touched &&
+            businessInformationForm?.get('VehiclesOwned')?.hasError('required')
+          "
+        >
+          No of Vehicle Owned with Capacity is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            businessInformationForm?.get('VehiclesOwned')?.hasError('isZero')
+          "
+        >
+          Value cannot be negative
+        </mat-error>
+      </div>
+      <div class="form-group col-md-6">
+        <label>No.of Retailers</label>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          [readonly]="readable"
+          placeholder="Enter Sales in Retail"
+          formControlName="NoOfRetailsers"
+          (keypress)="KeyPressValidation($event, 'Number')"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label>% Sales in Wholesale</label>
+        <input
+          type="number"
+          min="0.1"
+          step="0.1"
+          (keypress)="KeyPressValidation($event, 'NumberWithDot')"
+          class="form-control form-control-sm"
+          [readonly]="readable || editclick"
+          placeholder="Enter Sales in Wholesale"
+          formControlName="SalesWholesale"
+        />
+        <mat-error
+          *ngIf="
+            businessInformationForm?.get('SalesWholesale')?.touched &&
+            businessInformationForm?.get('SalesWholesale')?.hasError('required')
+          "
+        >
+          Sales in wholesale is required
+        </mat-error>
+      </div>
+      <div class="form-group col-md-6">
+        <label>% Sales in Retail</label>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          readonly
+          placeholder="Enter Sales in Retail"
+          formControlName="SalesRetail"
+        />
+      </div>
+
+      <div class="row w-100 m-0" *ngIf="show">
+        <div class="pt-3 w-100 px-3">
+          <button class="btn btn-danger rounded-0 btn-sm" [disabled]="editclick" (click)="cancel()" >Cancel</button>
+
+          <button
+            [disabled]="editclick"
+            class="btn btn-success rounded-0 btn-sm float-right px-3"
+            (click)="saveBusinesInfo()"
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary rounded-0 mx-1 btn-sm float-right"
+            (click)="editClicked()"
+          >
+            Edit <i class="bi bi-pencil ml-1"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<div>
+     <div class="cross-heading-lg">
+          <span>Dealers onboarding list</span>
+     </div>
+</div>
+<div class="boxcard mb-5 zero-radius-top">
+     <div class=" row mb-3">
+          <div class="col-md-3 offset-md-9">
+               <form class="search-filter m-0">
+                    <div class="input-group mb-1">
+                         <input type="search" placeholder="Search.." aria-label="Search" class="form-control log-input" (keyup)="searchFilter($event.target.value)">
+                         <span class="input-group-text log-input"><i class="bi bi-search"></i></span>
+                    </div>
+               </form>
+          </div>
+     </div>
+
+
+     <div class=" tab-align table-responsive">
+          <table class=" col-xl-12 table-css nowrap" mat-table [dataSource]="channeldataSource">
+               <ng-container matColumnDef="transactionId">
+                    <th mat-header-cell *matHeaderCellDef> Transaction Id </th>
+                    <td mat-cell *matCellDef="let element"> {{formPrefix(element.TransId) + element.TransId}} </td>
+               </ng-container>
+
+               <ng-container matColumnDef="firmName">
+                    <th mat-header-cell *matHeaderCellDef> Firm Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+               </ng-container>
+               <ng-container matColumnDef="category">
+                    <th mat-header-cell *matHeaderCellDef> Category </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.Category }}</td>
+               </ng-container>
+                <ng-container matColumnDef="createdDate">
+                    <th mat-header-cell *matHeaderCellDef> Created On </th>
+                    <td mat-cell *matCellDef="let element"> {{dateFormat(element.CreatedOn)}} </td>
+               </ng-container>
+
+<!--
+               <ng-container matColumnDef="LastUpdated">
+                    <th mat-header-cell *matHeaderCellDef> last Updated </th>
+                    <td mat-cell *matCellDef="let element"> {{dateFormat(element.UpdatedOn)}} </td>
+               </ng-container> -->
+
+
+               <ng-container matColumnDef="state">
+                    <th mat-header-cell *matHeaderCellDef> State </th>
+                    <td mat-cell *matCellDef="let element"> {{element.State}} </td>
+               </ng-container>
+
+               <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Status}}
+                    </td>
+               </ng-container>
+               <ng-container matColumnDef="sapCode">
+                    <th mat-header-cell *matHeaderCellDef> SAP Code </th>
+                    <td mat-cell *matCellDef="let element"> {{element.SAPCode}} </td>
+               </ng-container>
+
+            <ng-container matColumnDef="virtualCode">
+              <th mat-header-cell *matHeaderCellDef> VirtualCode </th>
+              <td nbTooltip="Appointment Letter Generated :{{element.IsAppointmentLetter || '-' }} , Email Generated : {{element.IsEmail || '-'}}" nbTooltipPlacement="top" mat-cell *matCellDef="let element"> {{element.VirtualCode || '-' }}  </td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="Action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element">
+
+                <button class="btn btn-link" (click)="review(element.TransId,element.Status)"> Review </button></td>
+            </ng-container>
+
+               <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header-row-css"></tr>
+               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+     </div>
+</div>

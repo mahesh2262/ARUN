@@ -1,0 +1,1079 @@
+<div class="dialog-box" *ngIf="boxContent == 'addPersonal'">
+  <form [formGroup]="addForm">
+    <div class="col-xl-12 header">
+      <span class="header-text">Fill Your Personal Details</span>
+    </div>
+    <nb-card>
+      <nb-card-body class="">
+        <div class="p-md-3 p-0">
+          <div class="col mb-3">
+            <input
+              type="text"
+              class="form-control mb-3 mx-auto w-100 mw-100"
+              formControlName="PersonName"
+              nbInput
+              placeholder="Enter Your Name"
+              oninput="this.value = this.value.trimStart().toUpperCase()"
+              (keypress)="keyPressValidation($event, 'Name')"
+            />
+            <mat-error
+              *ngIf="
+                addForm?.get('PersonName')?.touched &&
+                addForm?.get('PersonName')?.hasError('required')
+              "
+            >
+              Name is required
+            </mat-error>
+          </div>
+
+          <div class="col mb-3">
+            <input
+              type="text"
+              class="form-control mw-100"
+              formControlName="Mobile"
+              nbInput
+              placeholder="Enter Your Mobile Number"
+              maxLength="10"
+              minlength="10"
+              oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
+              (keypress)="keyPressValidation($event, 'Number')"
+            />
+            <mat-error
+              *ngIf="
+                addForm?.get('Mobile')?.touched &&
+                addForm?.get('Mobile')?.hasError('required')
+              "
+            >
+              Mobile Number is required
+            </mat-error>
+
+            <mat-error
+              *ngIf="
+                isInValidMobile || addForm?.get('Mobile')?.hasError('pattern')
+              "
+            >
+              Invalid Mobile Number
+            </mat-error>
+          </div>
+
+          <div class="col mb-3">
+            <input
+              type="email"
+              class="form-control mb-3 mw-100"
+              formControlName="Email"
+              nbInput
+              placeholder="Enter Your EmailId"
+              oninput="this.value = this.value.trimStart().toLowerCase()"
+            />
+            <mat-error
+              *ngIf="
+                addForm?.get('Email')?.touched &&
+                addForm?.get('Email')?.hasError('required')
+              "
+            >
+              Email is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                addForm?.get('Email')?.hasError('pattern') ||
+                addForm?.get('Email').hasError('isValidEmail')
+              "
+            >
+              Invalid Email ID
+            </mat-error>
+          </div>
+        </div>
+
+        <div class="col-xl-12 text-center mt-4">
+          <button
+            class="btn btn-danger btn-sm mr-2 px-4 rounded-0"
+            (click)="value('close')"
+            type="button"
+          >
+            Cancel
+          </button>
+          <button
+            class="btn btn-success btn-sm px-4 rounded-0"
+            (click)="value('add')"
+            type="submit"
+            [disabled]="!addForm.valid"
+          >
+            Add
+          </button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </form>
+</div>
+
+<div class="dialog-box" *ngIf="boxContent == 'editPersonal'">
+  <form [formGroup]="addForm">
+    <div class="col-xl-12 header">
+      <span class="header-text">Edit Your Personal Details</span>
+    </div>
+    <nb-card>
+      <nb-card-body class="">
+        <div class="p-md-3 p-0">
+          <div pulldiv class="col mb-3">
+            <input
+              type="text"
+              class="form-control mb-3 mw-100"
+              formControlName="PersonName"
+              nbInput
+              placeholder="Enter Your Name"
+              oninput="this.value = this.value.trimStart().toUpperCase()"
+              (keypress)="keyPressValidation($event, 'Name')"
+            />
+            <mat-error
+              *ngIf="
+                addForm?.get('PersonName')?.touched &&
+                addForm?.get('PersonName')?.hasError('required')
+              "
+            >
+              Name is required
+            </mat-error>
+          </div>
+
+          <div class="col mb-3">
+            <input
+              type="text"
+              class="form-control mw-100"
+              formControlName="Mobile"
+              nbInput
+              placeholder="Enter Your Mobile Number"
+              oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
+              (keypress)="keyPressValidation($event, 'Number')"
+              minlength="10"
+              maxlength="10"
+            />
+            <mat-error
+              *ngIf="
+                addForm?.get('Mobile')?.touched &&
+                addForm?.get('Mobile')?.hasError('required')
+              "
+            >
+              Mobile Number is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                isInValidMobile || addForm?.get('Mobile')?.hasError('pattern')
+              "
+            >
+              Invalid Mobile Number
+            </mat-error>
+          </div>
+
+          <div class="col mb-3">
+            <input
+              type="email"
+              class="form-control mb-3 mw-100"
+              formControlName="Email"
+              nbInput
+              placeholder="Enter Your EmailId"
+              oninput="this.value = this.value.trimStart().toLowerCase()"
+            />
+            <mat-error
+              *ngIf="
+                addForm?.get('Email')?.touched &&
+                addForm?.get('Email')?.hasError('required')
+              "
+            >
+              Email is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                addForm?.get('Email')?.hasError('pattern') ||
+                addForm?.get('Email')?.hasError('isValidEmail')
+              "
+            >
+              Invalid Email ID
+            </mat-error>
+          </div>
+        </div>
+
+        <div class="col-xl-12 text-center mt-4">
+          <button
+            type="button"
+            class="btn btn-danger btn-sm mr-2 px-4 rounded-0"
+            (click)="value('close')"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="btn btn-success btn-sm px-4 rounded-0"
+            (click)="value('add')"
+            [disabled]="!addForm.valid"
+          >
+            Add
+          </button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </form>
+</div>
+
+<div
+  class="delete-dialog"
+  *ngIf="
+    boxContent == 'deletePersonal' ||
+    boxContent == 'deleteSecurity' ||
+    boxContent == 'deleteTerritory' ||
+    boxContent == 'deleteBrand' ||
+    boxContent == 'deleteApprovalNotification'
+  "
+  [config]="{ backdrop: 'static', keyboard: false }"
+>
+  <div class="pb-4 text-center">
+    <span class="h6">Are you sure want to delete ?</span>
+  </div>
+  <div class="col-xl-12 text-center mt-4">
+    <button
+      type="button"
+      class="btn btn-danger btn-sm mr-2 px-4"
+      (click)="delete('no')"
+    >
+      No
+    </button>
+    <button
+      type="submit"
+      class="btn btn-success btn-sm px-4"
+      (click)="delete('yes')"
+    >
+      Yes
+    </button>
+  </div>
+</div>
+
+<div
+  class="changePassword dialog-box p-0 position-relative"
+  *ngIf="boxContent == 'changePassword'"
+>
+  <div class="header py-2 pos-head">
+    <span class="h6 text-white m-0 py-2">Change Passsword</span>
+  </div>
+  <form [formGroup]="passwordForm">
+    <nb-card class="m-0 shadow-none">
+      <nb-card-body class="pt-0">
+        <div class="pb-1">
+          <input
+            type="password"
+            class="form-control mb-3 mx-auto"
+            formControlName="currentPassword"
+            [ngModel]="currentPassword"
+            nbInput
+            placeholder="Enter Your CurrentPassword"
+          />
+
+          <input
+            type="password"
+            class="form-control mb-3 mx-auto"
+            formControlName="newPassword"
+            [ngModel]="newPassword"
+            nbInput
+            placeholder="Enter Your New Password"
+          />
+
+          <input
+            type="password"
+            class="form-control mb-3 mx-auto"
+            formControlName="conformPassword"
+            [ngModel]="conformPassword"
+            nbInput
+            placeholder="Conform Your New Password"
+          />
+        </div>
+        <div class="col-xl-12 text-center mt-3">
+          <button
+            class="btn btn-danger btn-sm mr-2 px-4"
+            (click)="passwordChange('close')"
+          >
+            Cancel
+          </button>
+          <button
+            class="btn btn-success btn-sm px-4"
+            (click)="passwordChange('add')"
+          >
+            Add
+          </button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </form>
+</div>
+
+<div
+  class="delete-dialog"
+  *ngIf="boxContent == 'reject'"
+  [config]="{ backdrop: 'static', keyboard: false }"
+>
+  <div class="pb-4 text-center">
+    <span class="h6">Are you sure want to reject ?</span>
+  </div>
+  <div class="col-xl-12 text-center mt-4">
+    <button
+      class="btn btn-danger btn-sm mr-2 px-4"
+      (click)="reject('notRejected')"
+    >
+      No
+    </button>
+    <button class="btn btn-success btn-sm px-4" (click)="reject('Rejected')">
+      Yes
+    </button>
+  </div>
+</div>
+
+<div
+  class="delete-dialog"
+  *ngIf="boxContent == 'addSecurity'"
+  [config]="{ backdrop: 'static', keyboard: false }"
+>
+  <div class="pb-4 text-center">
+    <span class="h6">Are you sure want to add security details ?</span>
+  </div>
+  <div class="col-xl-12 text-center mt-4">
+    <button
+      class="btn btn-danger btn-sm mr-2 px-4 rounded-0"
+      (click)="addSecurityDetails('notAdded')"
+    >
+      No
+    </button>
+    <button
+      class="btn btn-success btn-sm px-4 rounded-0"
+      (click)="addSecurityDetails('addSecurity')"
+    >
+      Yes
+    </button>
+  </div>
+</div>
+
+<div
+  class="delete-dialog"
+  *ngIf="boxContent == 'editSecurityDetails'"
+  [config]="{ backdrop: 'static', keyboard: false }"
+>
+  <div class="pb-4 text-center">
+    <span class="h6">Are you sure want to add security details ?</span>
+  </div>
+  <div class="col-xl-12 text-center mt-4">
+    <button
+      class="btn btn-danger btn-sm mr-2 px-4 rounded-0"
+      (click)="addSecurityDetails('notAdded')"
+    >
+      No
+    </button>
+    <button
+      class="btn btn-success btn-sm px-4 rounded-0"
+      (click)="addSecurityDetails('editSecurity')"
+    >
+      Yes
+    </button>
+  </div>
+</div>
+
+<!-- <div class="dialog-box-security px-md-3 px-0" *ngIf="boxContent == 'editSecurityDetails'">
+    <form [formGroup]="SecurityForm">
+        <div class=" col-xl-12 header">
+            <span class="header-text">Edit Your Security Details</span>
+        </div>
+
+
+    </form>
+</div> -->
+
+<!-- Edit your Territory Master -->
+<!-- 'dChannel','stateCode', 'stateName', 'countyCode', 'countyName', 'raEmpID', 'raEmpName', 'raEmail', 'actionAD' -->
+
+<div
+  class="dialog-box-territory px-md-3 px-0"
+  *ngIf="boxContent == 'editTerritory' || boxContent == 'addTerritory'"
+>
+  <form [formGroup]="TerritoryForm">
+    <div class="col-xl-12 header">
+      <span class="header-text">Edit Your Territory Details</span>
+    </div>
+    <nb-card class="p-3">
+      <div class="row p-md-3 p-0">
+        <div class="col-md-4 mb-3">
+          <label>Distribution Channel</label>
+          <input
+            type="text"
+            class="form-control mb-2 mw-100"
+            formControlName="DistChannel"
+            nbInput
+            placeholder="Enter Your Channel Name"
+            (keypress)="keyPressValidation($event, 'Number')"
+          />
+          <mat-error
+            *ngIf="
+              TerritoryForm?.get('DistChannel')?.touched &&
+              TerritoryForm?.get('DistChannel')?.hasError('required')
+            "
+          >
+            Distribution Channel is required
+          </mat-error>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>State Code</label>
+          <input
+            type="text"
+            class="form-control mb-2 mw-100"
+            formControlName="StateCode"
+            nbInput
+            placeholder="Enter Your State Code"
+            (keypress)="keyPressValidation($event, 'Number')"
+          />
+          <mat-error
+            *ngIf="
+              TerritoryForm?.get('StateCode')?.touched &&
+              TerritoryForm?.get('StateCode')?.hasError('required')
+            "
+          >
+            State Code is required
+          </mat-error>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>State Name</label>
+          <input
+            type="text"
+            class="form-control mb-2 mw-100"
+            formControlName="StateName"
+            nbInput
+            placeholder="Enter Your State Name"
+            oninput="this.value = this.value.trimStart().toUpperCase()"
+            (keypress)="keyPressValidation($event, 'Name')"
+          />
+          <mat-error
+            *ngIf="
+              TerritoryForm?.get('StateName')?.touched &&
+              TerritoryForm?.get('StateName')?.hasError('required')
+            "
+          >
+            State Name is required
+          </mat-error>
+        </div>
+
+        <!-- 'countyCode', 'countyName', 'raEmpID', 'raEmpName', 'raEmail' -->
+        <div class="col-md-6 mb-3">
+          <label>County Code</label>
+          <input
+            type="text"
+            class="form-control mb-2 mw-100"
+            formControlName="CountyCode"
+            nbInput
+            placeholder="Enter Your County code"
+            (keypress)="keyPressValidation($event, 'Number')"
+          />
+          <mat-error
+            *ngIf="
+              TerritoryForm?.get('CountyCode')?.touched &&
+              TerritoryForm?.get('CountyCode')?.hasError('required')
+            "
+          >
+            County Code is required
+          </mat-error>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>County Name</label>
+          <input
+            type="text"
+            class="form-control mb-2 mw-100"
+            formControlName="CountyName"
+            nbInput
+            placeholder="Enter Your County Name"
+            oninput="this.value = this.value.trimStart().toUpperCase()"
+            (keypress)="keyPressValidation($event, 'Name')"
+          />
+          <mat-error
+            *ngIf="
+              TerritoryForm?.get('CountyName')?.touched &&
+              TerritoryForm?.get('CountyName')?.hasError('required')
+            "
+          >
+            County Name is required
+          </mat-error>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>RA Employee Id</label>
+          <input
+            type="text"
+            class="form-control mb-2 mw-100"
+            formControlName="RAEmployeeId"
+            nbInput
+            placeholder="Enter Your EmpID"
+            (keypress)="keyPressValidation($event, 'A&N')"
+          />
+          <mat-error
+            *ngIf="
+              TerritoryForm?.get('RAEmployeeId')?.touched &&
+              TerritoryForm?.get('RAEmployeeId')?.hasError('required')
+            "
+          >
+            Employee Id is required
+          </mat-error>
+        </div>
+        <div class="col-md-8 mb-3">
+          <label>RA Name</label>
+          <input
+            type="text"
+            class="form-control mb-2 mw-100"
+            formControlName="RAEmployeeName"
+            nbInput
+            placeholder="Enter RA Employee Name"
+            oninput="this.value = this.value.trimStart().toUpperCase()"
+            (keypress)="keyPressValidation($event, 'Name')"
+          />
+          <mat-error
+            *ngIf="
+              TerritoryForm?.get('RAEmployeeName')?.touched &&
+              TerritoryForm?.get('RAEmployeeName')?.hasError('required')
+            "
+          >
+            Name is required
+          </mat-error>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label>RA Email Id</label>
+          <input
+            type="text"
+            class="form-control mb-2 mw-100"
+            formControlName="RAEmailId"
+            nbInput
+            oninput="this.value = this.value.trimStart()"
+            placeholder="Enter Your Employee Email"
+          />
+          <mat-error
+            *ngIf="
+              TerritoryForm?.get('RAEmailId')?.touched &&
+              TerritoryForm?.get('RAEmailId')?.hasError('required')
+            "
+          >
+            Email is required
+          </mat-error>
+          <mat-error
+            *ngIf="
+              TerritoryForm?.get('RAEmailId')?.hasError('pattern') ||
+              TerritoryForm?.get('RAEmailId')?.hasError('isValidEmail')
+            "
+          >
+            Invalid Email ID
+          </mat-error>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label>RA Positin Id</label>
+          <input
+            type="text"
+            class="form-control mb-2 mw-100"
+            formControlName="RAPositionId"
+            nbInput
+            placeholder="Enter Your Position Id"
+            (keypress)="keyPressValidation($event, 'A&N')"
+          />
+        </div>
+      </div>
+
+      <div class="col-xl-12 text-center mt-4">
+        <button
+          class="btn btn-danger btn-sm mr-2 px-4 rounded-0"
+          (click)="cancel()"
+        >
+          Cancel
+        </button>
+        <button
+          class="btn btn-success btn-sm px-4 rounded-0"
+          (click)="addOreditTerritory()"
+        >
+          Add
+        </button>
+      </div>
+    </nb-card>
+  </form>
+</div>
+
+<div
+  class="dialog-box-security px-md-3 px-0"
+  *ngIf="data.Action == 'addBrand' || data.Action == 'editBrand'"
+>
+  <form [formGroup]="partyBackgroundForm">
+    <div class="col-xl-12 header">
+      <span *ngIf="data.Action == 'addBrand'" class="header-text"
+        >Add Party Background Details</span
+      >
+      <span *ngIf="data.Action == 'editBrand'" class="header-text"
+        >Edit partyBackground Details</span
+      >
+    </div>
+    <nb-card class="p-3">
+      <div class="row p-md-3 p-0">
+
+        <div class="col-md-6 mb-3">
+          <div class="mb-2">
+            <label class="w-100 mb-0">Select Business Type</label>
+            <nb-select
+              class="w-100 mw-100 selectBox form-control"
+              placeholder="Select Business"
+              formControlName="Business"
+            >
+              <nb-option
+                *ngFor="let bg of partyBackgroundData"
+                [value]="bg"
+              >
+                {{ bg }}
+              </nb-option>
+            </nb-select>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="mb-2">
+            <label class="w-100 mb-0">Select Brand</label>
+            <nb-select
+              class="w-100 mw-100 selectBox form-control"
+              placeholder="Select Brand"
+              formControlName="Brand"
+            >
+              <nb-option
+                *ngFor="let brandName of brandNames"
+                [value]="brandName"
+              >
+                {{ brandName }}
+              </nb-option>
+            </nb-select>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="mb-2">
+            <label class="w-100 mb-0">Select Unit</label>
+            <nb-select
+              class="w-100 mw-100 selectBox form-control"
+              placeholder="Select Unit"
+              formControlName="Unit"
+            >
+              <nb-option
+                *ngFor="let unit of unitList"
+                [value]="unit"
+              >
+                {{ unit }}
+              </nb-option>
+            </nb-select>
+          </div>
+        </div>
+
+        <div
+          class="col-md-6 mb-3"
+        >
+          <label class="w-100 mb-0"
+            >Average Monthly sales (in MT)</label
+          >
+          <input
+            type="number"
+            class="form-control mb-2 mw-100"
+            formControlName="AvgMonthlySales"
+            nbInput
+            placeholder="Average Monthly sales"
+          />
+          <mat-error
+            *ngIf="partyBackgroundForm.get('AvgMonthlySales').hasError('isZero')"
+          >
+            Value cannot be negative or zero
+          </mat-error>
+        </div>
+
+        <!-- <div
+          class="col-md-6 mb-3"
+          *ngIf="data.partyBackground.includes('White cement')"
+        >
+          <label class="w-100 mb-0"
+            >Average Monthly sale on White cement (in MT)</label
+          >
+          <input
+            type="number"
+            class="form-control mb-2 mw-100"
+            formControlName="AvgSaleOnWC"
+            nbInput
+            placeholder="Average Monthly sale on  White cement"
+          />
+          <mat-error
+            *ngIf="partyBackgroundForm.get('AvgSaleOnWC').hasError('isZero')"
+          >
+            Value cannot be negative or zero
+          </mat-error>
+        </div> -->
+
+        <div class="col-xl-12 text-center pb-3">
+          <button
+            class="btn btn-danger btn-sm mr-2 px-4"
+            (click)="cancel('close')"
+          >
+            Cancel
+          </button>
+          <button
+            class="btn btn-success btn-sm px-4"
+            (click)="partybackground('add')"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+    </nb-card>
+  </form>
+</div>
+
+<div
+  class="changePassword dialog-box p-0 position-relative"
+  *ngIf="boxContent == 'addDocAdd'"
+>
+  <div class="header py-2 pos-head">
+    <span class="h6 text-white m-0 py-2">Change Passsword</span>
+  </div>
+  <form [formGroup]="passwordForm">
+    <nb-card class="m-0 shadow-none">
+      <nb-card-body class="pt-0">
+        <div class="pb-1">
+          <input
+            type="text"
+            class="form-control mb-3 mx-auto"
+            formControlName="currentPassword"
+            [ngModel]="currentPassword"
+            nbInput
+            placeholder="Enter Your CurrentPassword"
+          />
+
+          <input
+            type="text"
+            class="form-control mb-3 mx-auto"
+            formControlName="newPassword"
+            [ngModel]="newPassword"
+            nbInput
+            placeholder="Enter Your New Password"
+          />
+
+          <input
+            type="text"
+            class="form-control mb-3 mx-auto"
+            formControlName="conformPassword"
+            [ngModel]="conformPassword"
+            nbInput
+            placeholder="Conform Your New Password"
+          />
+        </div>
+        <div class="col-xl-12 text-center mt-3">
+          <button
+            class="btn btn-danger btn-sm mr-2 px-4"
+            (click)="passwordChange('close')"
+          >
+            Cancel
+          </button>
+          <button
+            class="btn btn-success btn-sm px-4"
+            (click)="passwordChange('add')"
+          >
+            Add
+          </button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </form>
+</div>
+
+<div class="dialog-box-document" *ngIf="boxContent == 'documentEdit'">
+  <form [formGroup]="addForm">
+    <div
+      class="col-xl-12 header d-flex justify-content-between align-items-center py-1 top-stick"
+    >
+      <div>
+        <span class="header-text">{{ FileName }}</span>
+      </div>
+      <div class="text-right">
+        <button type="button" class="btn" (click)="downloadFile()">
+          <i class="bi bi-download text-white"></i>
+        </button>
+        <button type="button" class="btn" (click)="value('close')">
+          <i class="bi bi-x-lg text-white"></i>
+        </button>
+      </div>
+    </div>
+    <nb-card>
+      <nb-card-body class="pt-0">
+        <div class="p-md-3 p-0 text-center">
+          <div
+            class="section-loader-point"
+            id="nb-global-spinner"
+            *ngIf="loader"
+          >
+            <div
+              class="spinner-grow text-primary"
+              style="width: 4rem; height: 4rem"
+              role="status"
+            ></div>
+          </div>
+          <!-- <div class="container-fluid"> -->
+          <img
+            class="img-zoom"
+            *ngIf="AttachmentData"
+            [src]="AttachmentData"
+            alt=""
+          />
+          <!-- </div> -->
+        </div>
+
+        <!-- <div class="col-xl-12 text-center mt-4">
+                    <button class="btn btn-danger btn-sm mr-2 px-4 rounded-0 " type="button">Cancel</button>
+                    <button class="btn btn-success btn-sm px-4 rounded-0 " (click)="value('add')" type="submit"
+                        [disabled]="!addForm.valid">Add</button>
+                </div> -->
+      </nb-card-body>
+    </nb-card>
+  </form>
+</div>
+
+<div
+  class="dialog-box dialog-box-approval"
+  *ngIf="boxContent == 'approvalDialog'"
+>
+  <div
+    class="col-xl-12 header d-flex justify-content-between align-items-center py-1 top-stick"
+  >
+    <div>
+      <span class="header-text">Remainder</span>
+    </div>
+    <div class="text-right">
+      <button type="button" class="btn" (click)="value('close')">
+        <i class="bi bi-x-lg text-white"></i>
+      </button>
+    </div>
+  </div>
+  <nb-card>
+    <nb-card-body class="pt-0">
+      <div class="p-md-3 p-0 text-center">
+        <h6 class="my-3">Please ensure you have saved all of your works?</h6>
+
+        <div class="row">
+          <div class="col-xl-12 text-center mt-3">
+            <button
+              class="btn btn-danger btn-sm mr-2 px-4"
+              (click)="closeRemainder('No')"
+            >
+              No
+            </button>
+            <button
+              class="btn btn-success btn-sm px-4"
+              (click)="closeRemainder('Yes')"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>
+
+<div class="dialog-box" *ngIf="boxContent == 'Approval'">
+  <form [formGroup]="ApprovalForm">
+    <div class="col-xl-12 header">
+      <span class="header-text">Customer Creation Notification</span>
+    </div>
+    <nb-card>
+      <nb-card-body class="">
+        <div class="pt-3 px-3">
+          <div pulldiv class="col mb-3">
+            <nb-select
+              class="w-100 mw-100 selectBox form-control"
+              placeholder="Select Role"
+              formControlName="Role"
+            >
+              <nb-option *ngFor="let role of RolesData" [value]="role.RoleId">
+                {{ role.Desc }}
+              </nb-option>
+            </nb-select>
+            <mat-error
+              *ngIf="
+                ApprovalForm?.get('Role')?.touched &&
+                ApprovalForm?.get('Role')?.hasError('required')
+              "
+            >
+              Role is required
+            </mat-error>
+          </div>
+        </div>
+
+        <div class="pt-3 px-3">
+          <div pulldiv class="col mb-3">
+            <input
+              type="text"
+              class="form-control mb-3 mw-100"
+              formControlName="Name"
+              nbInput
+              placeholder="Enter Your Name"
+              oninput="this.value = this.value.trimStart().toUpperCase()"
+            />
+            <mat-error
+              *ngIf="
+                ApprovalForm?.get('Name')?.touched &&
+                ApprovalForm?.get('Name')?.hasError('required')
+              "
+            >
+              Name is required
+            </mat-error>
+          </div>
+        </div>
+
+        <div class="pt-3 px-3">
+          <div class="col mb-3">
+            <input
+              type="email"
+              class="form-control mb-3 mw-100"
+              formControlName="Mail"
+              nbInput
+              placeholder="Enter Your EmailId"
+              oninput="this.value = this.value.trimStart().toLowerCase()"
+            />
+            <mat-error
+              *ngIf="
+                ApprovalForm?.get('Mail')?.touched &&
+                ApprovalForm?.get('Mail')?.hasError('required')
+              "
+            >
+              Email is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                ApprovalForm?.get('Mail')?.hasError('pattern') ||
+                ApprovalForm?.get('Mail').hasError('isValidEmail')
+              "
+            >
+              Invalid Email ID
+            </mat-error>
+          </div>
+        </div>
+
+        <div class="col-xl-12 text-center mt-4">
+          <button
+            type="button"
+            class="btn btn-danger btn-sm mr-2 px-4 rounded-0"
+            (click)="addApproval('close')"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="btn btn-success btn-sm px-4 rounded-0"
+            (click)="addApproval('add')"
+            [disabled]="!ApprovalForm.valid"
+          >
+            Add
+          </button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </form>
+</div>
+
+
+<div class="dialog-box" *ngIf="boxContent == 'Email'">
+  <form [formGroup]="EmailForm">
+    <div class="col-xl-12 header">
+      <span class="header-text">Customer Creation Notification</span>
+    </div>
+    <nb-card>
+      <nb-card-body class="">
+        <div class="pt-3 px-3">
+          <div pulldiv class="col mb-3">
+            <input
+              type="text"
+              class="form-control mb-3 mw-100"
+              formControlName="Name"
+              nbInput
+              placeholder="Enter Your Name"
+              oninput="this.value = this.value.trimStart().toUpperCase()"
+            />
+            <mat-error
+              *ngIf="
+                EmailForm?.get('Name')?.touched &&
+                EmailForm?.get('Name')?.hasError('required')
+              "
+            >
+              Name is required
+            </mat-error>
+          </div>
+        </div>
+
+        <div class="pt-3 px-3">
+          <div class="col mb-3">
+            <input
+              type="email"
+              class="form-control mb-3 mw-100"
+              formControlName="Mail"
+              nbInput
+              placeholder="Enter Your EmailId"
+              oninput="this.value = this.value.trimStart().toLowerCase()"
+            />
+            <mat-error
+              *ngIf="
+                EmailForm?.get('Mail')?.touched &&
+                EmailForm?.get('Mail')?.hasError('required')
+              "
+            >
+              Email is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                EmailForm?.get('Mail')?.hasError('pattern') ||
+                EmailForm?.get('Mail').hasError('isValidEmail')
+              "
+            >
+              Invalid Email ID
+            </mat-error>
+          </div>
+        </div>
+
+        <div class="col-xl-12 text-center mt-4">
+          <button
+            type="button"
+            class="btn btn-danger btn-sm mr-2 px-4 rounded-0"
+            (click)="addEmail('close')"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="btn btn-success btn-sm px-4 rounded-0"
+            (click)="addEmail('add')"
+            [disabled]="!EmailForm.valid"
+          >
+            Add
+          </button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </form>
+</div>
+
+<div class="dialog-boc" *ngIf="boxContent == 'rejectDialog'">
+  <nb-card status="danger">
+    <nb-card-header>
+      <div class="d-flex justify-content-center align-items-center">
+        <h2 class="f-b">Reason</h2>
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="p-3">
+        <textarea
+          nbInput
+          [formControl]="reectFormControl"
+          cols="30"
+          rows="10"
+          placeholder="Enter the reason..."
+        ></textarea>
+      </div>
+    </nb-card-body>
+    <ng-card-footer>
+      <div class="d-flex justify-content-center align-items-center p-3">
+        <button nbButton outline status="danger" class="m-2" (click)="RejectForm('close')">Cancel</button>
+        <button nbButton outline status="success" (click)="RejectForm('ok')">Ok</button>
+      </div>
+    </ng-card-footer>
+  </nb-card>
+</div>

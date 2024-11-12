@@ -1,0 +1,87 @@
+.filter-tab {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.table-css {
+  td.mat-cell {
+    padding: 16px 0;
+    border-bottom: 0px !important;
+    border-top: 1px solid beige;
+  }
+
+  td.mat-cell:first-child {
+    border-left: 0px !important;
+    padding: 0px 26px;
+  }
+
+  td.mat-cell:last-child {
+    border-right: 0px !important;
+    padding: 0px 0px;
+  }
+
+  tr.mat-header-cell {
+    border: beige;
+  }
+
+  th.mat-header-cell {
+    background-color: aliceblue;
+    border: beige;
+    font-size: 15px;
+  }
+
+  table {
+    border-spacing: 0 8px !important;
+    border: beige;
+  }
+}
+
+.checkBox-content {
+  padding: 0px 2px;
+}
+
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 10px;
+}
+
+.filter-heading {
+
+  position: sticky;
+  bottom: 1rem;
+  align-self: flex-end;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  border: 2px dashed rgba(114, 186, 94, 0.35);
+  height: 400px;
+  background: rgba(114, 186, 94, 0.05);
+}
+
+.table-content {
+  margin-top: 2%
+}
+
+.info-scroll-app {
+  height: 70vh;
+  overflow-y: scroll;
+  border: 2px solid aliceblue;
+}
+
+.select-name {
+  font-size: 12px;
+}

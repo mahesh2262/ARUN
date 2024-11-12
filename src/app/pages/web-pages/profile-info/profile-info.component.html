@@ -1,0 +1,96 @@
+<div class="container p-0">
+    <div class="row gutters">
+
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 mb-md-0 mb-4">
+            <div class="boxcard h-100">
+                <div class="card-body">
+                    <div class="account-settings">
+                        <div class="user-profile">
+                            <div class="user-avatar">
+                                <img src="../../../../assets/images/Ellipse0.svg">
+                            </div>
+                            <h5 class="user-name">{{userName}}</h5>
+                            <h6 class="user-employeeId">{{empId}}</h6>
+                            <h6 class="user-employeeId">{{Role}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 mb-md-0 mb-4">
+            <div>
+                <div class="cross-heading">
+                    <span>Personal Information</span>
+                </div>
+            </div>
+            <form [formGroup]="profileInformationForm">
+                <div class="boxcard zero-radius-top">
+                    <div class="card-body p-md-3 p-0">
+                        <div class="row gutters">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="fullName">User Name</label>
+                                    <input type="text" class="form-control" id="fullName" placeholder="Enter user name"
+                                        formControlName="DisplayName">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="phone">First Name</label>
+                                    <input type="text" class="form-control" id="phone" placeholder="Enter First Name"
+                                        formControlName="FirstName">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="phone">Middle Name</label>
+                                    <input type="text" class="form-control" id="phone" placeholder="Enter Middle Name"
+                                        formControlName="MiddleName">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="phone">Last Name</label>
+                                    <input type="text" class="form-control" id="phone" placeholder="Enter Last Name"
+                                        formControlName="LastName">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="eMail">Email</label>
+                                    <input type="email" class="form-control" id="eMail" placeholder="Enter email ID"
+                                        formControlName="Email" oninput="this.value = this.value.trimStart().toLowerCase()">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="phone">Contact Number</label>
+                                    <input type="text" class="form-control" id="phone" placeholder="Enter phone number"
+                                        formControlName="Mobile">
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row mt-5">
+                            <div class="col-xl-2 change-password mb-md-0 mb-3">
+                                <button (click)="changePassword()" type="button" id="submit" name="submit"
+                                    class="btn btn-primary btn-sm w-100 text-center rounded-0">Change Password</button>
+                            </div>
+                            <div class=" col-xl-10 text-md-right text-center">
+                                <button type="button" id="submit" name="submit"
+                                    class="btn btn-danger btn-sm px-4 mr-2 rounded-0" (click)="cancel()">Cancel</button>
+                                <button type="button" id="submit" name="submit"
+                                    class="btn btn-success btn-sm px-4 rounded-0"
+                                    (click)="updateProfile()">Update</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,322 @@
+<!-- <p>dashboard works!</p> -->
+
+<div class="container-fluid mb-5 px-3 px-md-3 boxcard" *ngIf="role != 'NH'">
+  <div class="row">
+    <div class="col-md col-6" (click)="data('All')">
+      <div>
+        <div class="dash-card mb-md-0 mb-4 all-bg">
+          <div class="card-body">
+            <h5 class="card-title h6"><span class="all-bg-dot"></span>All</h5>
+            <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+            <div class="py-md-3 py-1 text-center">
+              <span class="count-text text-primary">{{
+                dashboardTableData.All?.length
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md col-6" (click)="data('Draft')" *ngIf="role == 'ASM'">
+      <div>
+        <div class="dash-card mb-md-0 mb-4 draft-bg">
+          <div class="card-body">
+            <h5 class="card-title h6">
+              <span class="draft-bg-dot"></span>Drafted
+            </h5>
+            <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+            <div class="py-md-3 py-1 text-center">
+              <span class="count-text text-purp">{{
+                dashboardTableData.Draft?.length
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md col-6" (click)="data('Intiated')" *ngIf="role == 'ASM'">
+      <div>
+        <div class="dash-card mb-md-0 mb-4 initiate-bg">
+          <div class="card-body">
+            <h5 class="card-title h6">
+              <span class="initiate-bg-dot"></span>Initiated
+            </h5>
+            <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+            <div class="py-md-3 py-1 text-center">
+              <span class="count-text text-info">{{
+                dashboardTableData.Initiated?.length
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md col-6" (click)="data('Pending')" *ngIf="role != 'ASM'">
+      <div>
+        <div class="dash-card mb-md-0 mb-4 pending-bg">
+          <div class="card-body">
+            <h5 class="card-title h6">
+              <span class="pending-bg-dot"></span>Pending
+            </h5>
+            <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+            <div class="py-md-3 py-1 text-center">
+              <span class="count-text text-warning">{{
+                dashboardTableData.Pending?.length
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md col-6" (click)="data('Approved')">
+      <div>
+        <div class="dash-card mb-md-0 mb-4 approve-bg">
+          <div class="card-body">
+            <h5 class="card-title h6">
+              <span class="approve-bg-dot"></span>Approved
+            </h5>
+            <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+            <div class="py-md-3 py-1 text-center">
+              <span class="count-text text-success">{{
+                dashboardTableData.Approved?.length
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md col-6" (click)="data('Rejected')">
+      <div>
+        <div class="dash-card mb-md-0 mb-4 reject-bg">
+          <div class="card-body">
+            <h5 class="card-title h6">
+              <span class="reject-bg-dot"></span>Rejected
+            </h5>
+            <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+            <div class="py-md-3 py-1 text-center">
+              <span class="count-text text-danger">{{
+                dashboardTableData.Rejected?.length
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- search Box and Filter -->
+<div _ngcontent-wpb-c414="" class="cross-heading-lg">
+  <span>Dashboard</span>
+</div>
+<div class="boxcard mb-5 zero-radius-top">
+  <div class="loader-point" id="nb-global-spinner" *ngIf="loader">
+    <div
+      class="spinner-grow text-primary"
+      style="width: 4rem; height: 4rem"
+      role="status"
+    ></div>
+    <span class="sr-only">Submitting...</span>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <div class="mt-2">
+        <span _ngcontent-wpb-c414="" class="h6">{{ tableTitleHeader }}</span>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-md-0 mb-3" *ngIf="userData.Role != 'NH'">
+      <nb-select
+        class="w-100 mw-100 form-control"
+        placeholder="Filter on Table"
+        (selectedChange)="selectedStatus($event)"
+      >
+        <nb-option *ngFor="let filter of filters" [value]="filter">
+          {{ filter }}
+        </nb-option>
+      </nb-select>
+    </div>
+
+    <div class="col-md-3">
+      <div class="input-group mb-1">
+        <input
+          type="search"
+          placeholder="Search.."
+          aria-label="Search"
+          class="form-control log-input"
+          (keyup)="searchFilter($event.target.value)"
+        />
+        <span class="input-group-text log-input"
+          ><i class="bi bi-search"></i
+        ></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row tab-align">
+    <nb-card class="table-responsive dash-tab-scroll">
+      <!-- <nb-route-tabset fullWidth [tabs]="tabs" (changeTab)="tableView($event)"></nb-route-tabset> -->
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="mat-elevation-z8 nowrap"
+        matSort
+      >
+        <ng-container matColumnDef="TransId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Transaction Id
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ formPrefix(element.TransId) + element.TransId }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Firm Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+        </ng-container>
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Category
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.Category }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="CreatedOn">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Created On</th>
+          <td mat-cell *matCellDef="let element">
+            {{ dateFormat(element.CreatedOn) }}
+          </td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="LastUpdated">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            last Updated
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.LastUpdated || "-" }}
+          </td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="State">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+          <td mat-cell *matCellDef="let element">{{ element.State }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="row">
+              <div class="col-12">
+                <!-- <div *ngIf="element.status == 'Approved'"
+                                                               class="status-approved mr-3"><i
+                                                                      class="bi bi-check-circle mr-2"></i>Approved
+                                                        </div> -->
+
+                <div
+                  *ngIf="element.Status.includes('Approved')"
+                  class="status-approved mr-3"
+                >
+                  <i class="bi bi-check-circle mr-2"></i>{{ element.Status }}
+                </div>
+
+                <div
+                  *ngIf="
+                    element.Status == 'Initiated' || element.Status == 'Draft'
+                  "
+                  class="status-open mr-3"
+                >
+                  <i class="bi bi-record-circle mr-2"></i>Open
+                </div>
+
+                <div
+                  *ngIf="element.Status == 'SAP'"
+                  class="status-pending mr-3"
+                >
+                  <i class="bi bi-pause-circle mr-2"></i>SAP
+                </div>
+
+                <div
+                  *ngIf="element.Status.includes('Rejected')"
+                  class="status-reject mr-3"
+                >
+                  <i class="bi bi-x-circle mr-2"></i>{{ element.Status }}
+                </div>
+
+                <div
+                  *ngIf="element.Status.includes('Pending')"
+                  class="status-pending mr-3"
+                >
+                  <i class="bi bi-pause-circle mr-2"></i>{{ element.Status }}
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="CustomerCode">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            [hidden]="userData.Role != 'NH'"
+          >
+            Customer Code
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [hidden]="userData.Role != 'NH'"
+          >
+            {{ element.SAPCode }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              class="btn btn-link"
+              (click)="review(element.TransId, element.Status)"
+            >
+              Review
+            </button>
+
+            <!-- <button class="btn btn-link" (click)="review(element.TransId,status)"
+                                                 *ngIf="userData.Role == 'RA'"
+                                                 [disabled]="userData.Role === 'RA' && (Statusselect == 'Pending With ZH' || Statusselect == 'Pending With NH' || Statusselect == 'Pending With ASM' || Statusselect === null)">Review</button>
+
+                                          <button class="btn btn-link" (click)="review(element.TransId,status)"
+                                                 *ngIf="userData.Role == 'NH'"
+                                                 [disabled]="userData.Role === 'NH' && (Statusselect == 'Pending With ZH' || Statusselect == 'Pending With RA' || Statusselect == 'Pending With ASM' || Statusselect === null)">Review</button>
+
+                                          <button class="btn btn-link" (click)="review(element.TransId,status)"
+                                                 *ngIf="userData.Role == 'ZH'"
+                                                 [disabled]="userData.Role === 'ZH' && (Statusselect == 'Pending With NH' || Statusselect == 'Pending With RA' || Statusselect == 'Pending With ASM' || Statusselect === null)">Review</button>
+
+                                          <button class="btn btn-link" (click)="review(element.TransId,status)"
+                                                 *ngIf="userData.Role == 'SH'"
+                                                 [disabled]="userData.Role === 'SH' && (Statusselect == 'Pending With NH' || Statusselect == 'Pending With RA' || Statusselect == 'Pending With ASM' || Statusselect === null)">Review</button> -->
+
+            <!-- <button class="btn btn-link" (click)="review(element.TransId,status)"
+                                                 *ngIf="userData.Role == 'SH"
+                                                 [disabled]="userData.Role === 'SH' && (Statusselect == 'Pending With NH' || Statusselect == 'Pending With RA' || Statusselect == 'Pending With ASM' || Statusselect === null)">Review</button> -->
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </nb-card>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+
+  <!-- <div class="row">
+              <div class="col-12">
+                     <div class="status-open mr-3"><i c lass="bi bi-record-circle mr-2"></i>Oper</div>
+                     <div class="status-pending mr-3"><i class="bi bi-pause-circle mr-2"></i>Pending</div>
+                     <div class="status-reject mr-3"><i class="bi bi-x-circle mr-2"></i>Rejected</div>
+                     <div class="status-approved mr-3"><i class="bi bi-check-circle mr-2"></i>Approved</div>
+              </div>
+       </div> -->
+</div>

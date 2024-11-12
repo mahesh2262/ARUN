@@ -1,0 +1,1174 @@
+<div class="tab-pane fade show active" #additional_data_info>
+  <div>
+    <div class="cross-heading">
+      <span>Additional Data</span>
+    </div>
+  </div>
+  <div class="boxcard mb-5 zero-radius-top">
+    <div>
+      <form class="row" [formGroup]="orgGroupForm">
+        <div class="form-group col-md-6">
+          <label
+            >Account Group<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <span>
+
+
+	<mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Account Group" formControlName="AccountGroup">
+          <mat-option>
+            <lib-mat-select-search
+              [list]="accGroup"
+              [searchProperties]="['Description', 'AccountGroup']"
+              (filtered)="accountGroups = $event">
+            </lib-mat-select-search>
+          </mat-option>
+
+		<mat-option *ngFor="let accountGroup of accountGroups" [value]="accountGroup.AccountGroup">
+			{{accountGroup.AccountGroup}} - {{accountGroup.Description}}
+		</mat-option>
+	</mat-select>
+            <mat-error
+              *ngIf="
+                orgGroupForm?.get('AccountGroup')?.touched &&
+                orgGroupForm?.get('AccountGroup')?.hasError('required')
+              "
+              >Account Group is required</mat-error
+            >
+          </span>
+        </div>
+        <div class="form-group col-md-6">
+          <label
+            >Distribution Channel<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <span>
+
+
+            <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Distribution Channel" formControlName="DistributionChannel">
+          <mat-option>
+            <lib-mat-select-search
+              [list]="distChannels"
+              [searchProperties]="['Description', 'DistributionChannel']"
+              (filtered)="distributionChannels = $event">
+            </lib-mat-select-search>
+          </mat-option>
+
+		<mat-option *ngFor="let distributionChannel of distributionChannels" [value]="distributionChannel.DistributionChannel">
+			{{distributionChannel.DistributionChannel}} - {{distributionChannel.Description}}
+		</mat-option>
+	</mat-select>
+
+
+            <mat-error
+              *ngIf="
+                orgGroupForm?.get('DistributionChannel')?.touched &&
+                orgGroupForm?.get('DistributionChannel')?.hasError('required')
+              "
+              >Distribution Channel is required</mat-error
+            >
+          </span>
+        </div>
+        <div class="form-group col-md-6">
+          <label
+            >Sales Org<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <span>
+
+
+
+            <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Sales Organizations" formControlName="SalesOrg">
+          <mat-option>
+            <lib-mat-select-search
+              [list]="saleOrg"
+              [searchProperties]="['Description', 'SalesOrg']"
+              (filtered)="salesOrganizations = $event">
+            </lib-mat-select-search>
+          </mat-option>
+
+		<mat-option *ngFor="let saleOrginization of salesOrganizations" [value]="saleOrginization.SalesOrg">
+			{{saleOrginization.SalesOrg}} - {{saleOrginization.Description}}
+		</mat-option>
+	</mat-select>
+
+
+            <mat-error
+              *ngIf="
+                orgGroupForm?.get('SalesOrg')?.touched &&
+                orgGroupForm?.get('SalesOrg')?.hasError('required')
+              "
+              >Sales.Org is required</mat-error
+            >
+          </span>
+        </div>
+        <div class="form-group col-md-6">
+          <label
+            >Division<span class="text-danger font-weight-bold"> *</span></label
+          >
+          <span>
+
+
+            <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Division" formControlName="Division" multiple>
+          <mat-option>
+            <lib-mat-select-search
+              [list]="division"
+              [searchProperties]="['Description', 'Division']"
+              (filtered)="divisions = $event">
+            </lib-mat-select-search>
+          </mat-option>
+
+		<mat-option *ngFor="let division of divisions" [value]="division.Division">
+			{{division.Division}} - {{division.Description}}
+		</mat-option>
+	</mat-select>
+
+            <mat-error
+              *ngIf="
+                orgGroupForm?.get('Division')?.touched &&
+                orgGroupForm?.get('Division')?.hasError('required')
+              "
+              >Division is required</mat-error
+            >
+          </span>
+        </div>
+        <div class="form-group col-md-6">
+          <label
+            >Region<span class="text-danger font-weight-bold"> *</span></label
+          >
+          <span>
+
+
+            <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select region" formControlName="Region">
+          <mat-option>
+            <lib-mat-select-search
+              [list]="region"
+              [searchProperties]="['Description', 'Region']"
+              (filtered)="regions = $event">
+            </lib-mat-select-search>
+          </mat-option>
+
+		<mat-option *ngFor="let region of regions" [value]="region.Region">
+			{{region.Region}} - {{region.Description}}
+		</mat-option>
+	</mat-select>
+
+
+            <mat-error
+              *ngIf="
+                orgGroupForm?.get('Region')?.touched &&
+                orgGroupForm?.get('Region')?.hasError('required')
+              "
+              >Region is required</mat-error
+            >
+          </span>
+        </div>
+        <div class="form-group col-md-6">
+          <label
+            >Company Code<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+
+
+          <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Company" formControlName="Company" multiple>
+            <mat-option>
+              <lib-mat-select-search
+                [list]="cCode"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="companyCode = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let company of companyCode" [value]="company.Code">
+              {{company.Code}} - {{company.Desc}}
+            </mat-option>
+          </mat-select>
+
+<!--          <nb-select-->
+<!--            multiple-->
+<!--            class="w-100 mw-100 selectBox form-control"-->
+<!--            placeholder="Select region"-->
+<!--            formControlName="Company"-->
+<!--          >-->
+<!--            <nb-option-->
+<!--              *ngFor="let company of companyCode"-->
+<!--              [value]="company.Code"-->
+<!--            >-->
+<!--              {{ company.Code }} - {{ company.Desc }}-->
+<!--            </nb-option>-->
+<!--          </nb-select>-->
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('Company')?.touched &&
+              orgGroupForm?.get('Company')?.hasError('required')
+            "
+            >Company code is required</mat-error
+          >
+        </div>
+        <div class="form-group col-md-6">
+          <label
+            >Industry<span class="text-danger font-weight-bold"> *</span></label
+          >
+          <!-- <input
+            type="text"
+            class="form-control form-control-sm"
+            placeholder="Enter the Industry ID"
+            formControlName="Industry"
+            (keypress)="KeyPressValidation($event, 'A&N')"
+          /> -->
+          <span>
+
+
+            <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Industry" formControlName="Industry">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="Industri"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="Industries = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let Industry of Industries" [value]="Industry.Code">
+              {{Industry.Code}} - {{Industry.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('Industry')?.touched &&
+              orgGroupForm?.get('Industry')?.hasError('required')
+            "
+            >Industry is required</mat-error
+          >
+        </div>
+        <div class="form-group col-md-6">
+          <label
+            >Customer Group<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <span>
+
+             <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Customer Group" formControlName="CustomerGroup" multiple>
+            <mat-option>
+              <lib-mat-select-search
+                [list]="cGroup"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="customerGroup = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let customersGroup of customerGroup" [value]="customersGroup.Code">
+              {{customersGroup.Code}} - {{customersGroup.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Customer Group"-->
+<!--              formControlName="CustomerGroup"-->
+<!--              multiple-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let customersGroup of customerGroup"-->
+<!--                [value]="customersGroup.Code"-->
+<!--              >-->
+<!--                {{ customersGroup.Code }} - {{ customersGroup.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('CustomerGroup')?.touched &&
+              orgGroupForm?.get('CustomerGroup')?.hasError('required')
+            "
+            >Customer Group is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Customer Account Assessment Group<span
+              class="text-danger font-weight-bold"
+            >
+              *</span
+            ></label
+          >
+          <!--                         <input type="text" class="form-control form-control-sm" formControlName="AccountAssessmentGroupCustomer">-->
+
+          <span>
+
+
+               <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Account Assessment Group Customer" formControlName="AccountAssessmentGroupCustomer">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="accAssGroup"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="accAssignmentGroup = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let accAssignmentsGroup of accAssignmentGroup" [value]="accAssignmentsGroup.Code">
+              {{accAssignmentsGroup.Code}} - {{accAssignmentsGroup.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Account Assessment GroupCustomer"-->
+<!--              formControlName="AccountAssessmentGroupCustomer"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let accAssignmentsGroup of accAssignmentGroup"-->
+<!--                [value]="accAssignmentsGroup.Code"-->
+<!--              >-->
+<!--                {{ accAssignmentsGroup.Code }} - {{ accAssignmentsGroup.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+
+
+          </span>
+
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('AccountAssessmentGroupCustomer')?.touched &&
+              orgGroupForm
+                ?.get('AccountAssessmentGroupCustomer')
+                ?.hasError('required')
+            "
+            >Assessment Group is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Attribute2<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!-- <input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="Attribute9"
+          /> -->
+          <span>
+
+                     <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Attribute2" formControlName="Attribute2">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="attributetwoList"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="attribute2List = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let attribute2 of attribute2List" [value]="attribute2.Code">
+              {{attribute2.Code}} - {{attribute2.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('Attribute2')?.touched &&
+              orgGroupForm?.get('Attribute2')?.hasError('required')
+            "
+            >Attribute2 is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Attribute6<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!-- <input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="Attribute6"
+          /> -->
+          <span>
+
+                       <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Attribute6" formControlName="Attribute6">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="attributesixList"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="attribute6List = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let attribute6 of attribute6List" [value]="attribute6.Code">
+              {{attribute6.Code}} - {{attribute6.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Attribute6"-->
+<!--              formControlName="Attribute6"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let attribute6 of attribute6List"-->
+<!--                [value]="attribute6.Code"-->
+<!--              >-->
+<!--                {{ attribute6.Code }} - {{ attribute6.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('Attribute6')?.touched &&
+              orgGroupForm?.get('Attribute6')?.hasError('required')
+            "
+            >Attribute6 is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Attribute9<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!-- <input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="Attribute9"
+          /> -->
+          <span>
+
+
+                          <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Attribute9" formControlName="Attribute9">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="attributenineList"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="attribute9List = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let attribute9 of attribute9List" [value]="attribute9.Code">
+              {{attribute9.Code}} - {{attribute9.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Attribute9"-->
+<!--              formControlName="Attribute9"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let attribute9 of attribute9List"-->
+<!--                [value]="attribute9.Code"-->
+<!--              >-->
+<!--                {{ attribute9.Code }} - {{ attribute9.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('Attribute9')?.touched &&
+              orgGroupForm?.get('Attribute9')?.hasError('required')
+            "
+            >Attribute9 is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Customer Pricing Procedure<span
+              class="text-danger font-weight-bold"
+            >
+              *</span
+            ></label
+          >
+          <!--                         <input type="text" class="form-control form-control-sm" formControlName="CustomerPricingProcedure">-->
+
+          <span>
+
+
+             <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Customer Pricing Procedure" formControlName="CustomerPricingProcedure">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="cPricongProcedure"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="customerPricongProcedure = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let customerPricingProcedure of customerPricongProcedure" [value]="customerPricingProcedure.Code">
+              {{customerPricingProcedure.Code}} - {{customerPricingProcedure.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Customer Pricing Procedure"-->
+<!--              formControlName="CustomerPricingProcedure"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="-->
+<!--                  let customerPricingProcedure of customerPricongProcedure-->
+<!--                "-->
+<!--                [value]="customerPricingProcedure.Code"-->
+<!--              >-->
+<!--                {{ customerPricingProcedure.Code }} - -->
+<!--                {{ customerPricingProcedure.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('CustomerPricingProcedure')?.touched &&
+              orgGroupForm
+                ?.get('CustomerPricingProcedure')
+                ?.hasError('required')
+            "
+            >Customer Pricing Procedure is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Customer Statistics Group<span
+              class="text-danger font-weight-bold"
+            >
+              *</span
+            ></label
+          >
+          <!--                         <input type="text" class="form-control form-control-sm" formControlName="CustomerStatisticsGroup">-->
+
+          <span>
+
+
+            <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Customer Statistics Group" formControlName="CustomerStatisticsGroup">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="cStatistics"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="customerStatistics = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let customersStatistics of customerStatistics" [value]="customersStatistics.Code">
+              {{customersStatistics.Code}} - {{customersStatistics.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Customer Statistics Group"-->
+<!--              formControlName="CustomerStatisticsGroup"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let customersStatistics of customerStatistics"-->
+<!--                [value]="customersStatistics.Code"-->
+<!--              >-->
+<!--                {{ customersStatistics.Code }} - {{ customersStatistics.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('CustomerStatisticsGroup')?.touched &&
+              orgGroupForm?.get('CustomerStatisticsGroup')?.hasError('required')
+            "
+            >Customer Statistics Group is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Delivery Plant<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="DeliveryPlant"
+          />
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('DeliveryPlant')?.touched &&
+              orgGroupForm?.get('DeliveryPlant')?.hasError('required')
+            "
+            >Delivery Plant is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Delivery Priority<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!--                         <input type="text" class="form-control form-control-sm" formControlName="DeliveryPriority">-->
+
+          <span>
+
+             <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Delivery Priority" formControlName="DeliveryPriority">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="deliveryPrioritys"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="deliveryPriority = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let deliveryPriorityis of deliveryPriority" [value]="deliveryPriorityis.Code">
+              {{deliveryPriorityis.Code}} - {{deliveryPriorityis.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Delivery Priority"-->
+<!--              formControlName="DeliveryPriority"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let deliveryPriorityis of deliveryPriority"-->
+<!--                [value]="deliveryPriorityis.Code"-->
+<!--              >-->
+<!--                {{ deliveryPriorityis.Code }} - {{ deliveryPriorityis.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('DeliveryPriority')?.touched &&
+              orgGroupForm?.get('DeliveryPriority')?.hasError('required')
+            "
+            >Delivery Priority is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Incoterms<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!--                         <input type="text" class="form-control form-control-sm" formControlName="Incoterms">-->
+          <span>
+
+
+            <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Incoterms" formControlName="Incoterms">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="incoTerm"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="incoTerms = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let incoTerm of incoTerms" [value]="incoTerm.Code">
+              {{incoTerm.Code}} - {{incoTerm.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Incoterms"-->
+<!--              formControlName="Incoterms"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let incoTerm of incoTerms"-->
+<!--                [value]="incoTerm.Code"-->
+<!--              >-->
+<!--                {{ incoTerm.Code }} - {{ incoTerm.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('Incoterms')?.touched &&
+              orgGroupForm?.get('Incoterms')?.hasError('required')
+            "
+            >Incoterms is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label>POD Time Frame</label>
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="PODTimeFrame"
+          />
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('PODTimeFrame')?.touched &&
+              orgGroupForm?.get('PODTimeFrame')?.hasError('required')
+            "
+            >POD Time Frame is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Payment Terms<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!--                         <input type="text" class="form-control form-control-sm" formControlName="PaymentTerms">-->
+
+          <span>
+
+              <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Payment Terms" formControlName="PaymentTerms">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="paymentTerm"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="paymentTerms = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let paymentTerm of paymentTerms" [value]="paymentTerm.Code">
+              {{paymentTerm.Code}} - {{paymentTerm.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Payment Terms"-->
+<!--              formControlName="PaymentTerms"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let paymentTerm of paymentTerms"-->
+<!--                [value]="paymentTerm.Code"-->
+<!--              >-->
+<!--                {{ paymentTerm.Code }} - {{ paymentTerm.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('PaymentTerms')?.touched &&
+              orgGroupForm?.get('PaymentTerms')?.hasError('required')
+            "
+            >Payment Terms is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Price Group<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!--                         <input type="text" class="form-control form-control-sm" formControlName="PriceGroup">-->
+
+          <span>
+
+
+                 <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Price Group" formControlName="PriceGroup">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="priceGroups"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="priceGroup = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let priceGroups of priceGroup" [value]="priceGroups.Code">
+              {{priceGroups.Code}} - {{priceGroups.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Price Group"-->
+<!--              formControlName="PriceGroup"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let priceGroups of priceGroup"-->
+<!--                [value]="priceGroups.Code"-->
+<!--              >-->
+<!--                {{ priceGroups.Code }} - {{ priceGroups.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('PriceGroup')?.touched &&
+              orgGroupForm?.get('PriceGroup')?.hasError('required')
+            "
+            >Price Group is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Price List<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!--                         <input type="text" class="form-control form-control-sm" formControlName="PriceList">-->
+          <span>
+
+
+                      <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Price List" formControlName="PriceList">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="priceListData"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="priceListFilterData = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let priceLists of priceListFilterData" [value]="priceLists.Code">
+              {{priceLists.Code}} - {{priceLists.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Price List"-->
+<!--              formControlName="PriceList"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let priceLists of priceListFilterData"-->
+<!--                [value]="priceLists.Code"-->
+<!--              >-->
+<!--                {{ priceLists.Code }} - {{ priceLists.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('PriceList')?.touched &&
+              orgGroupForm?.get('PriceList')?.hasError('required')
+            "
+            >Price List is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Reconciliation Account<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!--                         <input type="text" class="form-control form-control-sm" formControlName="ReconciliationAccount">-->
+
+          <span>
+
+
+                         <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Reconciliation Account" formControlName="ReconciliationAccount">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="reconcilationAccounts"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="reconcilationAccount = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let reconcilationAccounts of reconcilationAccount" [value]="reconcilationAccounts.Code">
+              {{reconcilationAccounts.Code}} - {{reconcilationAccounts.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Reconciliation Account"-->
+<!--              formControlName="ReconciliationAccount"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let reconcilationAccounts of reconcilationAccount"-->
+<!--                [value]="reconcilationAccounts.Code"-->
+<!--              >-->
+<!--                {{ reconcilationAccounts.Code }} - -->
+<!--                {{ reconcilationAccounts.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('ReconciliationAccount')?.touched &&
+              orgGroupForm?.get('ReconciliationAccount')?.hasError('required')
+            "
+            >Reconciliation Account is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Sales District<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!--                         <input type="text" class="form-control form-control-sm" formControlName="SalesDistrict">-->
+
+          <span>
+
+              <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Sales District" formControlName="SalesDistrict">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="salesDistrictData"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="salesDistrictFilterData = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let salesDistrict of salesDistrictFilterData" [value]="salesDistrict.Code">
+              {{salesDistrict.Code}} - {{salesDistrict.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Sales District"-->
+<!--              formControlName="SalesDistrict"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let salesDistrict of salesDistrictFilterData"-->
+<!--                [value]="salesDistrict.Code"-->
+<!--              >-->
+<!--                {{ salesDistrict.Code }} - {{ salesDistrict.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('SalesDistrict')?.touched &&
+              orgGroupForm?.get('SalesDistrict')?.hasError('required')
+            "
+            >Sales District is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Sales Office<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!-- <input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="SalesOffice"
+          /> -->
+
+          <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select sales Office" formControlName="SalesOffice" (selectedChange)="SelectionChanges($event, 'salesOffice')">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="salesOffice"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="salesOffices = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let salesOffice of salesOffices" [value]="salesOffice.Code">
+              {{salesOffice.Code}} - {{salesOffice.Desc}}
+            </mat-option>
+          </mat-select>
+
+<!--          <nb-select-->
+<!--            class="w-100 mw-100 selectBox form-control"-->
+<!--            placeholder="Select Sales Office"-->
+<!--            formControlName="SalesOffice"-->
+<!--            (selectedChange)="SelectionChanges($event, 'salesOffice')"-->
+<!--          >-->
+<!--            <nb-option-->
+<!--              *ngFor="let salesOffice of salesOffices"-->
+<!--              [value]="salesOffice.Code"-->
+<!--            >-->
+<!--              {{ salesOffice.Code }} - {{ salesOffice.Desc }}-->
+<!--            </nb-option>-->
+<!--          </nb-select>-->
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('SalesOffice')?.touched &&
+              orgGroupForm?.get('SalesOffice')?.hasError('required')
+            "
+            >Sales Office is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Sales Group<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!-- <input type="text" class="form-control form-control-sm" formControlName="SalesGroup">-->
+
+          <span>
+
+
+                <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Sales Group" formControlName="SalesGroup">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="salesGrouped"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="salesGroup = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let salesGroups of salesGroup" [value]="salesGroups.Code">
+              {{salesGroups.Code}} - {{salesGroups.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Sales Group"-->
+<!--              formControlName="SalesGroup"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let salesGroups of salesGroup"-->
+<!--                [value]="salesGroups.Code"-->
+<!--              >-->
+<!--                {{ salesGroups.Code }} - {{ salesGroups.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('SalesGroup')?.touched &&
+              orgGroupForm?.get('SalesGroup')?.hasError('required')
+            "
+            >Sales Group is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Shipping Condition<span class="text-danger font-weight-bold">
+              *</span
+            ></label
+          >
+          <!--                         <input type="text" class="form-control form-control-sm" formControlName="ShippingCondition">-->
+
+          <span>
+
+                <mat-select class="w-100 mw-100 selectBox form-control"  placeholder="Select Shipping Condition" formControlName="ShippingCondition">
+            <mat-option>
+              <lib-mat-select-search
+                [list]="shippingConditions"
+                [searchProperties]="['Code', 'Desc']"
+                (filtered)="shippingCondition = $event">
+              </lib-mat-select-search>
+            </mat-option>
+
+            <mat-option *ngFor="let shippingConditions of shippingCondition" [value]="shippingConditions.Code">
+              {{shippingConditions.Code}} - {{shippingConditions.Desc}}
+            </mat-option>
+          </mat-select>
+
+
+<!--            <nb-select-->
+<!--              class="w-100 mw-100 selectBox form-control"-->
+<!--              placeholder="Select Shipping Condition"-->
+<!--              formControlName="ShippingCondition"-->
+<!--            >-->
+<!--              <nb-option-->
+<!--                *ngFor="let shippingConditions of shippingCondition"-->
+<!--                [value]="shippingConditions.Code"-->
+<!--              >-->
+<!--                {{ shippingConditions.Code }} - {{ shippingConditions.Desc }}-->
+<!--              </nb-option>-->
+<!--            </nb-select>-->
+
+          </span>
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('ShippingCondition')?.touched &&
+              orgGroupForm?.get('ShippingCondition')?.hasError('required')
+            "
+            >Shipping Condition is required</mat-error
+          >
+        </div>
+
+        <div class="form-group col-md-6">
+          <label
+            >Sold To Party<span
+              *ngIf="category?.toLowerCase().includes('ship to')"
+              class="text-danger font-weight-bold"
+            >
+              *</span
+            ></label
+          >
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="SoldToParty"
+            maxlength="10"
+          />
+
+          <!-- <input nbInput type="text" formControlName="SoldToParty" /> -->
+
+          <mat-error
+            *ngIf="
+              orgGroupForm?.get('SoldToParty')?.touched &&
+              orgGroupForm?.get('SoldToParty')?.hasError('required')
+            "
+            >Sold to party is required</mat-error
+          >
+          <mat-error
+            *ngIf="orgGroupForm?.get('SoldToParty')?.hasError('maxlength')"
+            >Maximum 10 digit allowed</mat-error
+          >
+        </div>
+
+        <div class="row w-100 m-0" *ngIf="show">
+          <div class="pt-3 w-100 px-3">
+            <button
+              class="btn btn-danger rounded-0 btn-sm"
+              [disabled]="editclick"
+              (click)="cancel()"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-success rounded-0 btn-sm float-right px-3"
+              (click)="saveAdditionalData()"
+              [disabled]="editclick"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary rounded-0 mx-1 btn-sm float-right"
+              (click)="editClicked()"
+            >
+              Edit <i class="bi bi-pencil ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

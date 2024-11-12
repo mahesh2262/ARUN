@@ -1,0 +1,39 @@
+{
+  "API": "https://localhost:7257/api",
+  "AUTHENTICATION_ENDPOINT": "https://localhost:7257/api/Auth/AuthenticateUser",
+  "OTP_ENDPOINT": "https://localhost:7257/api/otp",
+  "PERSONAL_INFO_ENDPOINT": "https://localhost:7257/api/PersonalInfo",
+  "BANK_INFO_ENDPOINT": "https://localhost:7257/api/BankInfo",
+  "BUSINESS_INFO_ENDPOINT": "https://localhost:7257/api/BusinessInfo",
+  "MARKET_INFO_ENDPOINT": "https://localhost:7257/api/MarketInfo",
+  "SECURITY_DEPOSIT_ENDPOINT": "https://localhost:7257/api/SecurityDeposits",
+  "DOCUMENT_PROCESSING_ENDPOINT": "https://localhost:7257/api/Document",
+  "DASHBOARD_ENDPOINT": "https://localhost:7257/api/Dashboard",
+  "DELEGATION_ENDPOINT": "https://localhost:7257/api/Delegation",
+  "MASTERS_ENDPOINT": "https://localhost:7257/api/Masters",
+  "APPROVAL_ENDPOINT": "https://localhost:7257/api/ApprovalTask",
+  "REJECT_ENDPOINT": "https://localhost:7257/api/Reject",
+  "USERS_ENDPOINT": "https://localhost:7257/api/User",
+  "CHANNEL_PARTNER": "https://localhost:7257/api/ChannelPartners",
+  "CUSTOMER_LOG_ENDPOINT": "https://localhost:7257/api/UserLog",
+  "ROLE_ID_ENDPOINT": "https://localhost:7257/api/Role",
+  "CREATE_USER_ENDPOINT": "https://localhost:7257/api/User",
+  "ADDITIONAL_DATA_ENDPOINT": "https://localhost:7257/api/OrganisationInputs",
+  "TERRITORY_MASTER_ENDPOINT": "https://localhost:7257/api/TerritoryMaster",
+  "MIN_YEAROFESTABLISHMENT_VALUE": 1950,
+  "DEFAULT_RECONCILIATION": "0000166101",
+  "DEFAULT_ATTRIBUTE2": "2C",
+  "BRAND_NAMES": "JK Laxmi,AKZONOBEL,ARDEX,ASIAN PAINT,BERGER,BIRLA WHITE,JK PAINTS,MYK LATICRETE,NEROLEC,NIPPON,RAF,WEBER,HIL,SANKARNI,OTHER",
+  "PARTY_BACKGROUND": "Paint,Paint & H/W & others,Tiles & Sanitary ware,Building Material,Hardware,Waterproofing Chemical,Others",
+  "UNITS": "MT,Ton,Lakhs,KG,Ltr,Carton,Bucket,Tin,Nos",
+  "PaymentToJkclBank": [
+    {
+      "Code": "001",
+      "Desc": "(IDBI-0090102000034548)-IBKL0000090"
+    }
+  ],
+  "Nepal_PinCode": "107,327,333,102,105,106,219,444,218,448,570,442,103,216,224,101,451,568,456,455,214,108,340,326,210,573,215,572,212,109,213,104,328,337,446,452,562,447,336,457,441,335,566,211,331,332,330,449,561,325,574,334,443,223,454,450,445,221,220,329,222,569,564,458,459,453,565,560,567,217,338,339,575,571,563",
+  "GL_Account": "167524",
+   "SecurityProducts": "JK Profix,PX,WC,WP,Wood Paint,PAINT,POP,ADH"
+
+}

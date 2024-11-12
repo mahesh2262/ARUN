@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en" id="printContent">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+  />
+</head>
+<body style="margin: 0px">
+<div
+  style="
+        background: #ffffff !important;
+        width: 800px;
+        font-family: 'Poppins';
+        position: relative;
+      "
+>
+  <table width="100%" style="border-spacing: 0px">
+    <tr>
+      <td
+        style="
+              background-image: url('../../../assets/images/header_img.png');
+              background-size: cover;
+              background-position: center;
+              background-attachment: unset;
+              background-repeat: no-repeat;
+              display: flex;
+              padding: 10px;
+              align-items: center;
+            "
+      >
+        <table width="100%">
+          <tr>
+            <td width="90%" align="center">
+                  <span
+                    style="
+                      word-break: break-all;
+                      color: #ffffff;
+                      font-size: 18px;
+                      font-weight: 500;
+                      margin-left: 5rem;
+                    "
+                  >
+                  User Details Portal</span
+                  >
+            </td>
+            <td width="10%">
+              <button
+                (click)="print('printContent')"
+                style="
+                      cursor: pointer;
+                      border: 2px solid rgb(255 255 255);
+                      font-size: 12px;
+                      padding: 3px 20px;
+                      text-align: center;
+                      background: rgb(24 128 207);
+                      border-radius: 50px;
+                      color: rgb(255 255 255);
+                      font-weight: 500;
+                    "
+              >
+                Download as Excel
+              </button>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <table
+          width="100%"
+          style="
+                padding: 2rem 3rem 0rem 3rem;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+        >
+          <tr>
+            <td>
+              <img
+                src="https://www.jkcement.com/frontTheme/img/jkcemet-logo.png"
+                width="200px"
+              />
+            </td>
+            <td style="line-height: 15px">
+              <div style="text-align: right">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: rgb(24 128 207);
+                        line-height: 15px;
+                      "
+                    >Date</span
+                    >
+              </div>
+              <div style="text-align: right">
+                    <span
+                      style="
+                        word-break: break-all;
+                        font-size: 12px;
+                        color: rgb(46 46 46);
+                        line-height: 15px;
+                        font-weight: 500;
+                      "
+                    >{{ currentDateTime }}</span>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td>
+        <table
+          width="100%"
+          style="
+                padding: 0rem 3rem 0rem 3rem;
+                font-weight: 500;
+                font-family: 'Poppins';
+                margin-bottom: 0rem;
+              "
+        >
+          <tr>
+            <td style="vertical-align: bottom">
+              <table
+                border="1"
+                width="100%"
+                style="
+                      text-align: center;
+                      font-size: 10px;
+                      border-collapse: collapse;
+                      color: rgb(0, 0, 0);
+                      border-color: rgb(0, 0, 0);
+                    "
+              >
+                <thead
+                  style="
+                        font-size: 12px;
+                        font-weight: 400;
+                        background: rgb(144 182 69);
+                      "
+                >
+                <tr>
+                  <th style="font-weight: 600; padding: 5px">S.no</th>
+                  <th style="font-weight: 600; padding: 5px">Employee Id</th>
+                  <th style="font-weight: 600; padding: 5px">Executive Name</th>
+                  <th style="font-weight: 600; padding: 5px">Email Id</th>
+                  <th style="font-weight: 600; padding: 5px">Mobile No</th>
+                  <th style="font-weight: 600; padding: 5px">Role</th>
+                  <th style="font-weight: 600; padding: 5px">Position Id</th>
+                  <th style="font-weight: 600; padding: 5px">Manager Position Id</th>
+                  <th style="font-weight: 600; padding: 5px">Manager Name</th>
+                  <th style="font-weight: 600; padding: 5px">User Account Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor = "let firm of userDetail; let i = index">
+                  <td style="padding: 5px; font-weight: 500">
+                    {{ i + 1 }}
+                  </td>
+                  <td style="padding: 5px; font-weight: 500">
+                    {{ firm.EmployeeId }}
+                  </td>
+                  <td style="padding: 5px; font-weight: 500">
+                    {{ firm.ExecutiveName }}
+                  </td>
+                  <td style="padding: 5px; font-weight: 500">
+                    {{ firm.EmailId }}
+                  </td>
+                  <td style="padding: 5px; font-weight: 500">
+                    {{ firm.MobileNo }}
+                  </td>
+                  <td style="padding: 5px; font-weight: 500">
+                    {{ firm.Role }}
+                  </td>
+                  <td style="padding: 5px; font-weight: 500">
+                    {{ firm.PositionId }}
+                  </td>
+                  <td style="padding: 5px; font-weight: 500">
+                    {{ firm.ManagerPositionId }}
+                  </td>
+                  <td style="padding: 5px; font-weight: 500">
+                    {{ firm.ManagerName }}
+                  </td>
+                  <td style="padding: 5px; font-weight: 500">
+                    {{ firm.UserAccountStatus }}
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- <div class="section-loader-point" id="nb-global-spinner" *ngIf="loader">
+  <div
+    class="spinner-grow text-primary"
+    style="width: 4rem; height: 4rem"
+    role="status"
+  ></div>
+</div> -->
+
+<!--<div class="loader-point" id="nb-global-spinner" >-->
+<!--  <div-->
+<!--    class="spinner-grow text-primary"-->
+<!--    style="width: 4rem; height: 4rem"-->
+<!--    role="status"-->
+<!--  ></div>-->
+<!--  <span class="sr-only">Submitting...</span>-->
+<!--</div>-->
+</body>
+</html>
+
+
+
+
+

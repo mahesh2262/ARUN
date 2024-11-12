@@ -1,0 +1,50 @@
+<section *ngIf="unAutharized">
+     <div class="container-fluid h-100">
+          <div class="row pt-5">
+               <div class="col-8 offset-2">
+                    <div>
+                         <div class="text-center mt-5">
+                              <img src="../../../../assets/images/errors/401_error_unauthorized_page.svg" width="50%">
+                         </div>
+                         <div class="text-center my-5">
+                              <button class="btn btn-download">Go Back to Previous Page</button>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+
+<section *ngIf="internalServer">
+     <div class="container-fluid h-100">
+          <div class="row pt-5">
+               <div class="col-8 offset-2">
+                    <div>
+                         <div class="text-center mt-5">
+                              <img src="../../../../assets/images/errors/500_error_page.svg" width="90%">
+                         </div>
+                         <div class="text-center my-5">
+                              <button class="btn btn-download">Go Back to Previous Page</button>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+
+<section *ngIf="notFound">
+     <div class="container-fluid h-100">
+          <div class="row pt-5">
+               <div class="col-8 offset-2">
+                    <div>
+                         <div class="text-center mt-5">
+                              <img src="../../../../assets/images/errors/404_page.svg" width="90%">
+                         </div>
+                         <div class="text-center my-5">
+                              <button class="btn btn-download" (click)="goBack()">Go Back to Previous Page</button>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>

@@ -1,0 +1,223 @@
+::ng-deep .dialog-box {
+  mat-dialog-container {
+    height: 450px;
+    width: 600px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    background-image: url(../../../assets/images/header_img.png);
+    border-radius: 9px 9px 0px 0px;
+    margin-top: 2%;
+
+    .header-text {
+      margin-top: 3%;
+      margin-bottom: 3%;
+      font-size: 18px;
+      font-weight: bold;
+      color: beige;
+    }
+  }
+
+  .cardBody-Box {
+    margin-top: 2%;
+    background-image: url(../../../assets/images/graph/graph11.png);
+  }
+
+  .Field-box {
+    margin-bottom: 2%;
+    margin-left: 17%;
+  }
+
+  .Button-Box {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+}
+
+::ng-deep .delete-dialog {
+  mat-dialog-container {
+    background-color: #ffffff;
+    height: fit-content;
+    width: 450px;
+    border-radius: 15px;
+  }
+
+  .header-text {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 37px;
+    margin-left: 14px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .button-foot {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 58px;
+  }
+}
+
+
+::ng-deep .changePassword {
+  mat-dialog-container {
+    background-color: #ffffff;
+    height: fit-content;
+    width: 450px;
+    border-radius: 15px;
+  }
+
+  .header-text {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 37px;
+    margin-left: 14px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .button-foot {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 58px;
+  }
+}
+
+// dialog-box-security
+
+::ng-deep .dialog-box-security {
+  mat-dialog-container {
+    height: 543x;
+    width: 700px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    background-image: url(../../../assets/images/header_img.png);
+    border-radius: 9px;
+    margin-top: 2%;
+
+    .header-text {
+      margin-top: 3%;
+      margin-bottom: 3%;
+      font-size: 18px;
+      font-weight: bold;
+      color: beige;
+    }
+  }
+
+  .cardBody-Box {
+    margin-top: 2%;
+    background-image: url(../../../assets/images/graph/graph11.png);
+  }
+
+  .Field-box {
+    margin-bottom: 2%;
+    margin-left: 17%;
+  }
+
+  .Button-Box {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+}
+
+//territory master edit 
+
+
+::ng-deep .dialog-box-territory {
+  mat-dialog-container {
+    height: 543px;
+    width: 700px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    background-image: url(../../../assets/images/header_img.png);
+    border-radius: 9px;
+    margin-top: 2%;
+
+    .header-text {
+      margin-top: 3%;
+      margin-bottom: 3%;
+      font-size: 18px;
+      font-weight: bold;
+      color: beige;
+    }
+  }
+
+  .cardBody-Box {
+    margin-top: 2%;
+    background-image: url(../../../assets/images/graph/graph11.png);
+  }
+
+  .Field-box {
+    margin-bottom: 2%;
+    margin-left: 17%;
+  }
+
+  .Button-Box {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+}
+
+
+::ng-deep .dialog-box-document {
+  mat-dialog-container {
+    height: 650px;
+    width: 990px !important;
+    padding: 0px !important;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    background-image: url(../../../assets/images/header_img.png);
+    border-radius: 9px;
+    margin-top: 0%;
+
+    .header-text {
+      margin-top: 3%;
+      margin-bottom: 3%;
+      font-size: 18px;
+      font-weight: bold;
+      color: beige;
+    }
+  }
+
+  .cardBody-Box {
+    margin-top: 2%;
+    background-image: url(../../../assets/images/graph/graph11.png);
+  }
+
+  .Field-box {
+    margin-bottom: 2%;
+    margin-left: 17%;
+  }
+
+  .Button-Box {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+}
+
+nb-card-body {
+  padding: 10px 0px;
+}
+
+// .snackBarPassword{
+//   margin: 0 !important;
+//   position: absolute;
+//   right: 25px;
+//   top: 60px;
+//   background-color: beige;
+// }

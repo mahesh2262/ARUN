@@ -1,0 +1,65 @@
+<!-- <p>territory-master works!</p> -->
+<div class=" row mb-3">
+     <div class="col-md-3">
+          <div class="input-group mb-1">
+               <input type="search" placeholder="Search.." aria-label="Search" class="form-control log-input" (keyup)="searchFilter($event.target.value)">
+               <span class="input-group-text log-input"><i class="bi bi-search"></i></span>
+          </div>
+     </div>
+     <div class="col-md-6"></div>
+     <div class="col-md-3 text-right px-md-4 px-0 mb-3">
+          <button class="btn btn-success btn-sm rounded-0" (click)="createApprovalNotification()">Create</button>
+     </div>
+</div>
+
+<div class=" tab-align table-responsive">
+     <table class=" col-xl-12 table-css nowrap" mat-table [dataSource]="approvalNotification">
+          <ng-container matColumnDef="Role">
+               <th mat-header-cell *matHeaderCellDef> Role </th>
+               <td mat-cell *matCellDef="let element"> {{element.Role}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Name">
+               <th mat-header-cell *matHeaderCellDef> Name </th>
+               <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Mail">
+               <th mat-header-cell *matHeaderCellDef> Email </th>
+               <td mat-cell *matCellDef="let element"> {{element.Mail}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="add">
+               <th mat-header-cell *matHeaderCellDef> Action </th>
+               <td mat-cell *matCellDef="let value; let dd = index">
+                    {{ value.add }}
+                    <button mat-mini-fab class="btn btn-sm" (click)="editApproval(value,dd)">
+                         <i class="bi bi-pen-fill text-info"></i>
+                    </button>
+                    <button mat-mini-fab class="btn btn-sm" (click)="deleteApproval(value, dd)">
+                         <i class="bi bi-trash text-danger"></i>
+                    </button>
+               </td>
+          </ng-container>
+
+          <!--            <ng-container matColumnDef="actionAD">-->
+          <!--                <th mat-header-cell *matHeaderCellDef class=" text-center">-->
+          <!--                    Actions </th>-->
+          <!--                &lt;!&ndash; <td mat-cell *matCellDef="let element"> {{element.actionAD}} </td> &ndash;&gt;-->
+          <!--                <td class="action-icon text-right" mat-cell *matCellDef="let element">-->
+          <!--                    {{element.add}}-->
+          <!--                    <button mat-mini-fab class="btn btn-sm" (click)="editTerritory(element)">-->
+          <!--                        <i class="bi bi-pen-fill text-info"></i>-->
+          <!--                    </button>-->
+          <!--                    <button mat-mini-fab class="btn btn-sm" (click)="deleteTerritory(element)">-->
+          <!--                        <i class="bi bi-trash text-danger"></i>-->
+          <!--                    </button>-->
+          <!--                </td>-->
+          <!--            </ng-container>-->
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns1" class="header-row-css"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+     </table>
+
+     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

@@ -1,0 +1,137 @@
+@import '../../../../../node_modules/bootstrap/scss/mixins/breakpoints';
+@import '../../../../../node_modules/@nebular/theme/styles/global/breakpoints';
+@import '../../styles/themes';
+
+@include nb-install-component() {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
+  }
+
+  nb-action {
+    height: auto;
+    display: flex;
+    align-content: center;
+  }
+
+  nb-user {
+    cursor: pointer;
+  }
+
+  ::ng-deep nb-search button {
+    padding: 0 !important;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    width: auto;
+
+    .sidebar-toggle {
+      @include nb-ltr(padding-right, 1.25rem);
+      @include nb-rtl(padding-left, 1.25rem);
+      text-decoration: none;
+      color: nb-theme(text-hint-color);
+
+      nb-icon {
+        font-size: 1.75rem;
+      }
+    }
+
+    .logo {
+      padding: 0 1.25rem;
+      font-size: 1.75rem;
+      @include nb-ltr(border-left, 1px solid nb-theme(divider-color));
+      @include nb-rtl(border-right, 1px solid nb-theme(divider-color));
+      white-space: nowrap;
+      text-decoration: none;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .control-item {
+      display: none;
+    }
+
+    .user-action {
+      border: none;
+      padding: 0;
+    }
+  }
+
+  @include media-breakpoint-down(is) {
+    nb-select {
+      display: none;
+    }
+  }
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-right: 0;
+}
+
+.dropbtn-alt {
+  background-color: #04aa6d00;
+  color: white;
+  padding: 0px;
+  font-size: 16px;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-alt {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content-alt {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+  border-radius: 5px;
+}
+
+.dropdown-content-alt a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content-alt a:hover {
+  background-color: #ddd;
+}
+
+.dropdown-alt:hover .dropdown-content-alt {
+  display: block;
+}
+
+.dropdown-alt:hover .dropbtn-alt {
+  background-color: #04aa6d00;
+}
+
+.drop-notify {
+  width: 300px;
+  max-height: 350px !important;
+  overflow-y: scroll;
+}
+
+@media (max-width: 575.98px) {
+  ngx-header {
+    display: block;
+  }
+}
